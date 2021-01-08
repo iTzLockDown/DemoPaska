@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Clasificacion de Contratos
+
+  </div>
+
+  <div class="card-body">
+    <div class="text-right "><a href="" class="btn btn-sm btn-outline-info" [routerLink]="'create'"><i class="fa fa-file-word-o"></i> Nuevo Contrato</a></div>
+    <br>
+    <table class="table table-responsive-sm">
+      <thead>
+      <tr>
+        <th>N°</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let clasificionContrato of clasificacionContrato">
+        <td>*</td>
+        <td> {{this.clasificionContrato.Nombre}}</td>
+        <td> {{this.clasificionContrato.Descripcion}}</td>
+        <td>
+          <button class="btn btn-sm btn-dark" type="button"><i class="fa fa-edit" title="Editar" [routerLink]="['actualizar', clasificionContrato.Codigo]"></i></button> |
+          <button class="btn btn-sm btn-danger" type="button"><i class="fa fa-trash" title="Eliminar"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="">Prev</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

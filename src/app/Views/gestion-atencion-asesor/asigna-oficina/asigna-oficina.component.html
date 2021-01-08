@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <strong> Oficinas Cola Unica  </strong>
+            <small>Lista</small>
+          </div>
+          <div class="card-body">
+            <table class="table table-responsive">
+              <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Oficina</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let oficina of oficinaColaUnica">
+                <td>{{ oficina.CodigoOficina }} </td>
+                <td>{{oficina.NombreOficina}}</td>
+                <td>
+                  <button class="btn btn-sm btn-dark" type="button" (click)="AsignaOficinaAsesor(this.oficina.CodigoOficina)"><i class="fa fa-arrow-right" title="Asignar a cola multiple"  ></i></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <strong> Oficinas asignadas a:  </strong>
+            <small>{{this.codigoUsuario}}</small>
+          </div>
+          <div class="card-body">
+            <table class="table table-responsive">
+              <thead>
+              <tr>
+                <th></th>
+                <th>Codigo</th>
+                <th>Oficina</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let oficinasAsesor of oficinaColaMultiple">
+                <td>
+                  <button class="btn btn-sm btn-dark" type="button" (click)="this.EliminaOficina(this.oficinasAsesor.CodigoOficina)"><i class="fa fa-arrow-left" title="Asignar a cola unica" ></i></button>
+                </td>
+                <td>{{ oficinasAsesor.CodigoOficina }} </td>
+                <td>{{oficinasAsesor.NombreOficina}}</td>
+
+
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row-->
+    <!-- /.row-->
+  </div>
+</div>
+

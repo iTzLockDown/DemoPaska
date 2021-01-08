@@ -1,0 +1,60 @@
+<app-estado-proceso-solicitud *ngIf="estadoModalProceso" (estadoModalProceso)="CerrarCreditoCliente($event)" [codigoSolicitud]="codigoSolicitud"></app-estado-proceso-solicitud>
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Solicitudes de Atencion
+
+  </div>
+
+  <div class="card-body">
+    <table class="table table-responsive">
+      <thead>
+      <tr>
+        <th>Oficina</th>
+        <th>Cliente</th>
+        <th>Asesor</th>
+        <th>Monto Cred.</th>
+        <th>Situacion</th>
+        <th><i class="fa fa-clock-o" title="Tiempo en Espera" ></i></th>
+        <th>N° Gar.</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let solicitud of atencionSolicitud">
+        <td>{{ solicitud.DescripcionOficina }} </td>
+        <td>{{solicitud.NombreCliente}}</td>
+        <td>{{solicitud.NombreAsesor}}</td>
+        <td> {{solicitud.MontoCredito}}</td>
+        <td> {{solicitud.Situacion}}</td>
+        <td> {{solicitud.Tiempo}}</td>
+        <td> {{solicitud.NumeroGarantias}}</td>
+        <td>
+          <button class="btn btn-sm btn-google-plus" type="button" [routerLink]="['gestionsolicitud', solicitud.CodigoSolicitud]" (click)="IniciarAccion(solicitud.CodigoSolicitud)"><i class="fa fa-edit" title="Gestionar" ></i></button> |
+          <button class="btn btn-sm btn-behance" type="button"  (click)="AbrirCreditoCliente(solicitud.CodigoSolicitud)"><i class="fa fa-list" title="Estado Proceso" ></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#">Prev</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

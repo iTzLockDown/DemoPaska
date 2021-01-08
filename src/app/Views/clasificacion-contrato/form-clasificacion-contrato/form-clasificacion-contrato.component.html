@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Formulario</strong> Clasificacion de Contratos</div>
+  <div class="card-body">
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Nombre</label>
+        <div class="col-md-9">
+          <input class="form-control" type="text" placeholder="Nombre..." name="nombre" [(ngModel)]="clasificacionContratoRequest.Nombre">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-left">Descripción</label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="textarea-input" name="descripcion" rows="3" placeholder="Descripción.." [(ngModel)]="clasificacionContratoRequest.Descripcion"></textarea>
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-sm btn-primary" role="button" (click)="Grabar()">
+      <i class="fa fa-save"></i> Grabar</button> &nbsp;
+    <button class="btn btn-sm btn-danger" type="reset" (click)="backClicked()">
+      <i class="fa fa-arrow-left"></i> Regresar</button>
+  </div>
+</div>

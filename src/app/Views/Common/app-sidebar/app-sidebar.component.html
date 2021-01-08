@@ -1,0 +1,193 @@
+<div class="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+
+      <li class="nav-title">Operaciones</li>
+
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-direction"></i> Gestión Atencion</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'listarsolicitud'">
+              <i class="fa fa-list"></i> Solicitud</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-support"></i> Evaluacion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-eye-slash"></i> Observadas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-arrow-circle-right"></i> Reenviadas</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-layers"></i> Solicitudes</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'registrarsolicitud'">
+              <i class="fa fa-plus-square-o"></i> Nuevo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-check"></i> Atentidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-reply"></i> Reenviadas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-ban"></i> Denegadas</a>
+          </li>
+          <!--          <li class="nav-item">-->
+          <!--            <a class="nav-link" href="base/cards.html">-->
+          <!--              <i class="nav-icon icon-puzzle"></i> Cards</a>-->
+          <!--          </li>-->
+        </ul>
+      </li>
+
+
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-list"></i> Cartera Externos</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-plus-circle"></i> Nueva cartera</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-mail-reply"></i> Envio cartera</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-terminal"></i> Gestion</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-folder"></i> Contratos</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-search"></i> Busqueda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-file-o"></i> Nuevo</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-paper-clip"></i> Gravamen</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-search"></i> Seguimiento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-file-text"></i> Solicitud Inmoviliario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-file-pdf-o"></i> Contrato</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-home"></i> Inmoviliario</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-plus"></i> Nuevo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-list"></i> Seguimiento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'usuario'">
+              <i class="fa fa-tags"></i> Estado</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-title"> Mantenimiento</li>
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-notebook"></i> Mantenimientos</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'clasificacioncontrato'">
+              <i class="fa fa-file-word-o"></i> Clasificacion Contrato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'contrato'">
+              <i class="fa fa-file-word-o"></i> Plantillas Contrato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'tiposolicitud'">
+              <i class="fa fa-flag"></i> Tipo solicitud</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'estadosolicitud'">
+              <i class="fa fa-navicon"></i> Estado solicitud</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'tiporequerimiento'">
+              <i class="fa fa-sticky-note"></i> Requisito</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="">
+          <i class="nav-icon icon-people"></i> Gestion Personal</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="'gestionarcola'" >
+              <i class="fa fa-list-ol"></i> Cola Atencion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="base/breadcrumb.html">
+              <i class="fa fa-institution"></i> Oficinas</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class=""></i> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class=""></i> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class=""></i> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class=""></i> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">
+          <i class=""></i> </a>
+      </li>
+    </ul>
+  </nav>
+  <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>

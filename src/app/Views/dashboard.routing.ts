@@ -1,0 +1,85 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import {AppDefaultLayoutComponent} from './Common/app-default-layout/app-default-layout.component';
+import {AppUsuarioComponent} from './app-usuario/app-usuario.component';
+import {AppError404Component} from './Common/error/app-error404/app-error404.component';
+import {FormUsuarioComponent} from './app-usuario/form-usuario/form-usuario.component';
+import {EstadoSolicitudComponent} from './estado-solicitud/estado-solicitud.component';
+import {SituacionSolicitudComponent} from './situacion-solicitud/situacion-solicitud.component';
+import {TipoRequerimientoComponent} from './tipo-requerimiento/tipo-requerimiento.component';
+import {TipoSolicitudComponent} from './tipo-solicitud/tipo-solicitud.component';
+import {ClasificacionContratoComponent} from './clasificacion-contrato/clasificacion-contrato.component';
+import {ContratoComponent} from './contrato/contrato.component';
+import {GestionAtencionAsesorComponent} from './gestion-atencion-asesor/gestion-atencion-asesor.component';
+import {AsignaOficinaComponent} from './gestion-atencion-asesor/asigna-oficina/asigna-oficina.component';
+import {FormClasificacionContratoComponent} from './clasificacion-contrato/form-clasificacion-contrato/form-clasificacion-contrato.component';
+import {FormModeloContratoComponent} from './contrato/form-modelo-contrato/form-modelo-contrato.component';
+import {AtencionSolicitudComponent} from './Solicitud/atencion-solicitud/atencion-solicitud.component';
+import {RegistraSolicitudComponent} from './Solicitud/registra-solicitud/registra-solicitud.component';
+import {GestionSolicitudComponent} from './Solicitud/gestion-solicitud/gestion-solicitud.component';
+export const routes: Routes = [
+  {
+    path: '', component: AppDefaultLayoutComponent,
+    children: [
+      {
+        path: 'usuario', component: AppUsuarioComponent
+      },
+      {
+        path: 'usuario/ucreate', component: FormUsuarioComponent
+      },
+      {
+        path: 'estadosolicitud', component: EstadoSolicitudComponent
+      },
+      {
+        path: 'situacionsolicitud', component: SituacionSolicitudComponent
+      },
+      {
+        path: 'tiporequerimiento', component: TipoRequerimientoComponent
+      },
+      {
+        path: 'tiposolicitud', component: TipoSolicitudComponent
+      },
+      {
+        path: 'clasificacioncontrato', component: ClasificacionContratoComponent
+      },
+      {
+        path: 'clasificacioncontrato/create', component: FormClasificacionContratoComponent
+      },
+      {
+        path: 'clasificacioncontrato/actualizar/:id', component: FormClasificacionContratoComponent
+      },
+      {
+        path: 'contrato', component: ContratoComponent
+      },
+      {
+        path: 'contrato/createcontrato', component: FormModeloContratoComponent
+      },
+      {
+        path: 'contrato/actualizarcontrato/:id', component: FormModeloContratoComponent
+      },
+      {
+        path: 'gestionarcola', component: GestionAtencionAsesorComponent
+      },
+      {
+        path: 'gestionarcola/asignaoficina/:id/:nombreAsesor', component: AsignaOficinaComponent
+      },
+      /* SOLICITUD */
+      {
+        path: 'listarsolicitud', component: AtencionSolicitudComponent
+      },
+      {
+        path: 'listarsolicitud/gestionsolicitud/:id', component: GestionSolicitudComponent
+      },
+      {
+        path: 'registrarsolicitud', component: RegistraSolicitudComponent
+      },
+      { path: '**', component: AppError404Component }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [ RouterModule ]
+})
+export class DashboardRouting {}

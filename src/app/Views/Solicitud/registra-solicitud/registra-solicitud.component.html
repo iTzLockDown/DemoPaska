@@ -1,0 +1,136 @@
+<app-buscar-cliente *ngIf="estadoModal" (estadoModalEvent)="CerrarBusquedaCliente($event)" (clienteSeleccionadoEvent)="ClienteSeleccionado($event)"></app-buscar-cliente>
+<app-credito-cliente *ngIf="estadoModalCredito" (codigoCredito)="RecibirCodigoCredito($event)" (estadoModalCreditoEvent)="CerrarCreditoCliente($event)" [codigoCliente]="codigoCliente"></app-credito-cliente>
+
+
+<div class="card card-accent-primary" >
+  <div class="card-header">
+    Datos del Cliente Codigo : <strong> </strong> </div>
+  <div class="card-body">
+    <div class="text-right ">
+      <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-github" (click)="AbrirCreditoCliente(this.clienteData.CodigoCliente)"><i class="fa fa-object-group"></i> Ver Detalle de Garantias</button> |
+      <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-reddit" (click)="AbrirCreditoCliente(this.clienteData.CodigoCliente)"><i class="fa fa-credit-card"></i> Ver Detalle de Credito</button> |
+      <button  class="btn btn-sm btn-outline-primary" (click)="AbrirBusquedaCliente()"><i class="fa fa-user-plus"></i> Buscar Cliente</button></div>
+    <br>
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Codigo Cliente</label>
+      <div class="col-md-3">
+        <input class="form-control" type="text" placeholder="Nombre..." name="documento" value="{{clienteData.CodigoCliente}}" >
+      </div>
+
+      <label class="col-md-2 col-form-label">Codigo Credito </label>
+      <div class="col-md-4">
+        <input class="form-control" type="text" placeholder="Nombre..." name="nombre"   value="{{this.recibeCodigo}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Documento Cliente</label>
+      <div class="col-md-3">
+        <input class="form-control" type="text" placeholder="Nombre..." name="documento" value="{{clienteData.Documento}}" >
+      </div>
+
+      <label class="col-md-2 col-form-label">Nombre Cliente</label>
+      <div class="col-md-4">
+        <input class="form-control" type="text" placeholder="Nombre..." name="nombre"   value="{{clienteData.Nombre}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Dirección</label>
+      <div class="col-md-3">
+        <input class="form-control" type="text" placeholder="Nombre..." name="nombre"  value="{{clienteData.Direccion}}" >
+      </div>
+
+      <label class="col-md-2 col-form-label">Telefono</label>
+      <div class="col-md-4">
+        <input class="form-control" type="text" placeholder="Nombre..." name="nombre"  value="{{clienteData.Telefono}}" >
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div  class="card card-accent-success">
+  <div class="card-header">
+    Registro Solicitud:<strong> </strong> </div>
+  <div class="card-body">
+    <div class="form-group row">
+
+      <label class="col-md-3 col-form-label">Tipo de Solicitud</label>
+      <div class="col-md-9">
+        <select class="form-control" name="listaTipoSolicitud"  [(ngModel)]="opcionSolicitud" (change)="TraerRequisitos(opcionSolicitud)">
+          <option [ngValue]="undefined">Selecciona una opción</option>
+          <option *ngFor="let solicitud of listaTipoSolicitud" [ngValue]="solicitud.Codigo">
+            {{solicitud.NombreSolicitud}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label text-left">Requisitos</label>
+      <div class="col-md-9">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th>Requisito</th>
+            <th>Cargar Archivo</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let solicitudRequisito of listaTipoSolicitudRequerimiento">
+            <td> {{this.solicitudRequisito.NombreRequisito}}</td>
+            <td>
+              <input (change)="SeleccionarArchivo($event)" name="file" type="file">
+
+            </td>
+            <td>
+              <button class="btn btn-sm btn-dropbox" type="button" (click)="AgregarRequisitos(this.solicitudRequisito.CodigoRequisito)" onclick="this.disabled=true;"><i class="fa fa-upload" title="Subir"></i></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Estado Solicitud</label>
+      <div class="col-md-3">
+
+        <select class="form-control" name="listaTipoSolicitud" >
+          <option [ngValue]="undefined">Selecciona una opción</option>
+          <option *ngFor="let estado of estadoSolicitud" [ngValue]="estado.CodigoEstado">
+            {{estado.Descripcion}}
+          </option>
+        </select>
+      </div>
+
+      <label class="col-md-2 col-form-label">Situacion Solicitud</label>
+      <div class="col-md-4">
+        <select class="form-control" name="listaTipoSolicitud" >
+          <option [ngValue]="undefined">Selecciona una opción</option>
+          <option *ngFor="let situacion of situacionSolicitud" [ngValue]="situacion.Codigo">
+            {{situacion.Descripcion}}
+          </option>
+        </select>
+      </div>
+    </div>
+<!--    <div class="form-group row">-->
+<!--      <label class="col-md-3 col-form-label text-left">Descripción</label>-->
+<!--      <div class="col-md-9">-->
+<!--        <textarea class="form-control" id="textarea-input" name="descripcion" rows="3" placeholder="Descripción.." ></textarea>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-sm btn-primary" role="button" (click)="ConstruyeGrabar()">
+      <i class="fa fa-save"></i> Grabar</button> &nbsp;
+    <button class="btn btn-sm btn-danger" type="reset" >
+      <i class="fa fa-arrow-left"></i> Regresar</button>
+  </div>
+</div>

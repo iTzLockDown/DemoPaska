@@ -1,0 +1,44 @@
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<app-header></app-header>
+<div class="app-body">
+  <app-sidebar></app-sidebar>
+  <main class="main">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">
+        <a href="#">Admin</a>
+      </li>
+      <li class="breadcrumb-item active">Dashboard</li>
+      <!-- Breadcrumb Menu-->
+      <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group">
+          <a class="btn" href="#">
+            <i class="icon-speech"></i>
+          </a>
+          <a class="btn" href="./">
+            <i class="icon-graph"></i>  Dashboard</a>
+          <a class="btn" href="#">
+            <i class="icon-settings"></i>  Settings</a>
+        </div>
+      </li>
+    </ol>
+    <div class="container-fluid">
+      <div class="animated fadeIn">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </main>
+  <app-asside></app-asside>
+</div>
+<footer class="app-footer">
+  <div>
+    <a href="">AdminPanel </a>
+    <span>&copy; 2020 PASKA WEB</span>
+  </div>
+  <div class="ml-auto">
+    <span> </span>
+    <a href="">CAJA HUANCAYO - CMACHYO</a>
+  </div>
+</footer>
+</body>
+

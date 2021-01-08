@@ -1,0 +1,69 @@
+
+
+
+<div class="abrir-modal animacion fadeIn">
+  <div class="modal " tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Busqueda de Credito!!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Codigo Credito</label>
+            <div class="col-md-3">
+              <input class="form-control"  type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.CodigoSolicitudCredito}}">
+            </div>
+
+            <label class="col-md-2 col-form-label">Tipo de Credito</label>
+            <div class="col-md-4">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre"  value="{{creditoData.DescripcionTipoCredito}}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Tipo de Producto</label>
+            <div class="col-md-3">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.DesripcionProducto}}">
+            </div>
+
+            <label class="col-md-2 col-form-label">Sub Producto</label>
+            <div class="col-md-4">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.DescripcionSubProducto}}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descripcion del Credito</label>
+            <div class="col-md-3">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.DescripcionModalidadCredito}}">
+            </div>
+
+            <label class="col-md-2 col-form-label">Monto del Credito</label>
+            <div class="col-md-4">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.MontoSolicitudCredito}}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Numero de Cuotas</label>
+            <div class="col-md-3">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.NumeroCuotas}}">
+            </div>
+
+            <label class="col-md-2 col-form-label">Plan de Credito</label>
+            <div class="col-md-4">
+              <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{creditoData.PlanSolicitudCredito}}">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="CerrarCredtio();EnviarCodigoCredito(creditoData.CodigoSolicitudCredito)">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
