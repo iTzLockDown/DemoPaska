@@ -3,9 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {AppError404Component} from './Views/Common/error/app-error404/app-error404.component';
 import {AppError500Component} from './Views/Common/error/app-error500/app-error500.component';
 import {AppLoginComponent} from './Views/app-login/app-login.component';
-import {AppDefaultLayoutComponent} from './Views/Common/app-default-layout/app-default-layout.component';
-import {AppUsuarioComponent} from './Views/app-usuario/app-usuario.component';
-import {FormUsuarioComponent} from './Views/app-usuario/form-usuario/form-usuario.component';
 
 export const routes: Routes = [
   {

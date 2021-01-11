@@ -15,7 +15,7 @@ export class ClasificacionContratoComponent implements OnInit {
               private clasificacionContratoService: ClasificacionContratoService) { }
 
   ngOnInit(): void {
-    this.clasificacionContratoService.Lista().subscribe(
+    this.clasificacionContratoService.Listar().subscribe(
       response => this.clasificacionContrato = response
     );
   }

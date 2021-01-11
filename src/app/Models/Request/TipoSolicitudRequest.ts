@@ -1,8 +1,19 @@
+import {TipoRequisitoResponse} from '../Response/TipoRequisitoResponse';
+
 export class TipoSolicitudRequest
 {
-  Codigo : string;
+  CodigoTipoSolicitud : number;
   NombreSolicitud : string;
   DescripcionSolicitud : string;
-  CodigoRequisito : string;
-  NombreRequisito : string;
+  UsuarioConsulta : string;
+  TerminalConsulta : string;
+  Requisitos: TipoRequisitoResponse[];
+  constructor() {
+    this.CodigoTipoSolicitud = 0;
+    this.NombreSolicitud = '';
+    this.DescripcionSolicitud = '';
+    this.UsuarioConsulta = '';
+    this.TerminalConsulta = '';
+    this.Requisitos = [];
+  }
 }

@@ -6,8 +6,6 @@ import {ContratoService} from '../../../Services/contrato.service';
 import {ClasificacionContratoService} from '../../../Services/clasificacion-contrato.service';
 import {ClasificacionContratoResponse} from '../../../Models/Response/ClasificacionContratoResponse';
 import alertifyjs from 'AlertifyJS';
-import {EstadoProcesoSolicitudService} from '../../../Services/estado-proceso-solicitud.service';
-import {AccionSolicitudResponse} from '../../../Models/Response/AccionSolicitudResponse';
 @Component({
   selector: 'app-form-modelo-contrato',
   templateUrl: './form-modelo-contrato.component.html'
@@ -23,7 +21,7 @@ export class FormModeloContratoComponent implements OnInit {
               private clasificacionContratoService: ClasificacionContratoService) { }
 
   ngOnInit(): void {
-    this.clasificacionContratoService.Lista().subscribe(
+    this.clasificacionContratoService.Listar().subscribe(
       response => this.clasificacionContrato = response
     );
 

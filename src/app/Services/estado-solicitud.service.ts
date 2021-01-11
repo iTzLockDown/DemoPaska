@@ -1,46 +1,40 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {LoginService} from './login.service';
+import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {SituacionResponse} from '../Models/Response/SituacionResponse';
 import {catchError} from 'rxjs/operators';
-import alertifyjs from 'AlertifyJS';
 import {EstadoResponse} from '../Models/Response/EstadoResponse';
+import {_EstadoSolicitudApi} from '../Util/RoutesAPI';
+import {EstadoSolicitudRequest} from '../Models/Request/EstadoSolicitudRequest';
 @Injectable({
   providedIn: 'root'
 })
 export class EstadoSolicitudService {
-  private urlEndPoint: string = "http://200.60.61.250:8007/api/estadosolicitud";
-  private httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
-
-  constructor(private http: HttpClient,
-              private router: Router,
-              private loginService: LoginService) { }
-
-  private agregarAutorizacionHeader()
-  {
-    let token = this.loginService.token();
-    if (token!=null){
-      return this.httpHeaders.append('Authorization', 'Bearer '+token);
-    }
-    return this.httpHeaders;
-  }
-  private Autorizacion(e):boolean{
-    if(e.status ==401 || e.status==403){
-      this.router.navigate(['/login']);
-      return true;
-    }
-    return false;
-  }
-  Listar(): Observable<EstadoResponse[]>{
-    return this.http.get<EstadoResponse[]>( `${this.urlEndPoint}/listar`, {headers: this.agregarAutorizacionHeader()} ).pipe(
+  constructor(private http: HttpClient) { }
+  Listar(): Observable<EstadoResponse[]> {
+    return this.http.get<EstadoResponse[]>( `${_EstadoSolicitudApi.Listar}`).pipe(
       catchError(e => {
-        this.Autorizacion(e);
-        alertifyjs
-          .alert("Error Verifique.", "No esta autenticado.!!", function(){
-          });
-        return throwError(e);
+        if (e.status === 400) {return throwError(e); }
+      })
+    );
+  }
+  Grabar(estadoSolicitud: EstadoSolicitudRequest): Observable<any>  {
+    return this.http.post<any>( `${_EstadoSolicitudApi.Grabar}`, estadoSolicitud).pipe(
+      catchError(e => {
+        if (e.status === 400) {return throwError(e); }
+      })
+    );
+  }
+  Actualizar(estadoSolicitud: EstadoSolicitudRequest): Observable<any>  {
+    return this.http.put<any>( `${_EstadoSolicitudApi.Actualizar}`, estadoSolicitud).pipe(
+      catchError(e => {
+        if (e.status === 400) {return throwError(e); }
+      })
+    );
+  }
+  Eliminar(estadoSolicitud: EstadoSolicitudRequest): Observable<any> {
+    return this.http.put<any>(`${_EstadoSolicitudApi.Eliminar}`, estadoSolicitud).pipe(
+      catchError(e => {
+        if (e.status === 400) {return throwError(e); }
       })
     );
   }

@@ -1,46 +1,34 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {LoginService} from './login.service';
+import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {TipoSolicitudRequest} from '../Models/Request/TipoSolicitudRequest';
 import {catchError} from 'rxjs/operators';
-import alertifyjs from 'AlertifyJS';
+import {_TipoRequisitoApi, _TipoSolicitudApi} from '../Util/RoutesAPI';
+import {TipoSolicitudResponse} from '../Models/Response/TipoSolicitudResponse';
 @Injectable({
   providedIn: 'root'
 })
 export class TipoSolicitudService {
+  constructor(private http: HttpClient) { }
 
-  private urlEndPoint: string = "http://200.60.61.250:8007/api/tiposolicitud";
-  private httpHeaders = new HttpHeaders({'Content-type': 'application/json'});
-
-  constructor(private http: HttpClient,
-              private router: Router,
-              private loginService: LoginService) { }
-
-  private agregarAutorizacionHeader()
-  {
-    let token = this.loginService.token();
-    if (token!=null){
-      return this.httpHeaders.append('Authorization', 'Bearer '+token);
-    }
-    return this.httpHeaders;
-  }
-  private Autorizacion(e):boolean{
-    if(e.status ==401 || e.status==403){
-      this.router.navigate(['/login']);
-      return true;
-    }
-    return false;
-  }
-  Listar(): Observable<TipoSolicitudRequest[]>{
-    return this.http.get<TipoSolicitudRequest[]>( `${this.urlEndPoint}/listar`, {headers: this.agregarAutorizacionHeader()} ).pipe(
+  Listar(): Observable<TipoSolicitudResponse[]>{
+    return this.http.get<TipoSolicitudResponse[]>( `${_TipoSolicitudApi.Listar}` ).pipe(
       catchError(e => {
-        this.Autorizacion(e);
-        alertifyjs
-          .alert("Error Verifique.", "No esta autenticado.!!", function(){
-          });
-        return throwError(e);
+        if (e.status ==400) return throwError(e);
+      })
+    );
+  }
+  Grabar(tipoSolicitud: TipoSolicitudRequest): Observable<any>{
+    return this.http.post<any>( `${_TipoSolicitudApi.Grabar}`, tipoSolicitud).pipe(
+      catchError(e => {
+        if (e.status ==400) return throwError(e);
+      })
+    );
+  }
+  Eliminar(codigoTipoSolicitud: string): Observable<any>{
+    return this.http.delete<any>( `${_TipoSolicitudApi.Eliminar}${codigoTipoSolicitud}`).pipe(
+      catchError(e => {
+        if (e.status ==400) return throwError(e);
       })
     );
   }

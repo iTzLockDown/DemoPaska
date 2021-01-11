@@ -14,7 +14,7 @@ export class ContratoComponent implements OnInit {
               private contratoService: ContratoService) { }
 
   ngOnInit(): void {
-    this.contratoService.Lista().subscribe(
+    this.contratoService.Listar().subscribe(
       response => this.modeloContrato = response
     );
   }

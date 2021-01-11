@@ -20,7 +20,7 @@ export class AtencionSolicitudComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.CargarAtencion('asasd');
+    this.CargarAtencion('asdasd');
   }
   CargarAtencion(codigoAsesor: string):void{
     this.solicitudAtencion.Lista(codigoAsesor).subscribe(
@@ -31,7 +31,7 @@ export class AtencionSolicitudComponent implements OnInit {
   IniciarAccion(codigoSolicitud: string): void
   {
     this.accionSolicitud.CodigoSolicitud = codigoSolicitud;
-    this.accionSolicitud.UsuarioAtencion = 'ntrucios';
+    this.accionSolicitud.UsuarioAtencion = 'alizana';
     this.accionSolicitud.UsuarioTerminal = 'CYRREC04';
 
     this.estadoProcesoSolicitud.Iniciar( this.accionSolicitud).subscribe(

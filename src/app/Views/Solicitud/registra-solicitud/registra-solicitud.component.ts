@@ -13,6 +13,10 @@ import {SituacionResponse} from '../../../Models/Response/SituacionResponse';
 import {AtencionSolicitudRequest} from '../../../Models/Request/AtencionSolicitudRequest';
 import {AtencionSolicitudService} from '../../../Services/atencion-solicitud.service';
 import {GarantiaRequest} from '../../../Models/Request/GarantiaRequest';
+import alertifyjs from 'AlertifyJS';
+import {Router} from '@angular/router';
+import {TipoSolicitudResponse} from '../../../Models/Response/TipoSolicitudResponse';
+import {TipoSolicitudRequisitoResponse} from '../../../Models/Response/TipoSolicitudRequisitoResponse';
 @Component({
   selector: 'app-registra-solicitud',
   templateUrl: './registra-solicitud.component.html'
@@ -25,20 +29,21 @@ export class RegistraSolicitudComponent implements OnInit {
   creditoInformacion : CreditoClienteResponse[];
   textoDeInput: string = null
   codigoCliente : string;
-  listaTipoSolicitud : TipoSolicitudRequest[];
-  listaTipoSolicitudRequerimiento: TipoSolicitudRequest[];
+  listaTipoSolicitud : TipoSolicitudResponse[];
+  listaTipoSolicitudRequerimiento: TipoSolicitudRequisitoResponse[];
   opcionSolicitud: any;
   requisitos: RequisitosRequest;
   requisitosSolicitud : RequisitosRequest[] = [];
   garantia : GarantiaRequest;
   garantias : GarantiaRequest[] = [];
-  coditoTipoSolicitud :bigint;
+  coditoTipoSolicitud :string;
   estadoSolicitud: EstadoResponse[];
   situacionSolicitud: SituacionResponse[];
   creditoData : CreditoClienteResponse = new CreditoClienteResponse();
   private archivoSeleccionado: File;
   recibeCodigo: string ='';
-  constructor(private buscarCliente: BuscarClienteService,
+  constructor(private router: Router,
+              private buscarCliente: BuscarClienteService,
               private tipoSolicitud: TipoSolicitudService,
               private tipoSolicitudRequerimineto: TipoSolicitudRequisitoService,
               private situacionSolicitudService: SituacionSolicitudService,
@@ -91,7 +96,7 @@ export class RegistraSolicitudComponent implements OnInit {
       );
   }
 
-  TraerRequisitos(codigoTipoSolicitud: bigint)
+  TraerRequisitos(codigoTipoSolicitud: string)
   {
     this.coditoTipoSolicitud = codigoTipoSolicitud;
     this.tipoSolicitudRequerimineto.Listar(codigoTipoSolicitud)
@@ -121,21 +126,24 @@ export class RegistraSolicitudComponent implements OnInit {
     this.garantia.Codigo = "2";
     this.garantias.push(this.garantia);
 
+
+
     this.atencionSolicitud.CodigoCliente = this.clienteData.CodigoCliente;
     this.atencionSolicitud.CodigoAsesor = 'ntrucios';
     this.atencionSolicitud.CodigoSolicitudCredito = this.recibeCodigo ;
-    this.atencionSolicitud.CodigoTiposolicitud = "56";
+    this.atencionSolicitud.CodigoTiposolicitud = this.opcionSolicitud.toString();
     this.atencionSolicitud.EstadoSolicitud = 1 ;
     this.atencionSolicitud.SituacionSolicitud = 2 ;
     this.atencionSolicitud.UsuarioRegistra = 'ntrucios';
     this.atencionSolicitud.TerminalRegistra = 'CYRREC04' ;
     this.atencionSolicitud.Garantias = this.garantias;
     this.atencionSolicitud.Requisitos =  this.requisitosSolicitud;
-
     this.atencionSolicitudService.Grabar(this.atencionSolicitud).subscribe(
-      response => console.log(response)
+      response =>{
+        this.router.navigate(['/dashboard/listarsolicitud']),
+          alertifyjs.success("Se registro la solicitud de Atencion.!!")
+      }
     );
-
-    console.log(this.atencionSolicitud)
+    console.log(this.atencionSolicitudService);
   }
 }

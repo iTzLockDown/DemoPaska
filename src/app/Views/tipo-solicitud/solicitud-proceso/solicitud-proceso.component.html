@@ -1,0 +1,93 @@
+
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Registro de Procesos
+
+  </div>
+
+  <div class="card-body">
+    <div class="text-right "><button class="btn btn-sm btn-primary"(click)="agregar(tipoProcesoTemplate)"><i class="fa fa-plus-circle"></i> Añadir Proceso</button></div>
+    <br>
+    <table class="table table-responsive-sm">
+      <thead>
+      <tr>
+        <th>N°</th>
+        <th>Proceso</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let procesoSolicitud of procesoSolicitudResponse">
+        <td>*</td>
+        <td>{{procesoSolicitud.DescripcinProceso}}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" type="button"><i class="fa fa-trash" title="Eliminar"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#">Prev</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<ng-template #tipoProcesoTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Tipo de Requerimientos</h4>
+    <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-red-cmac-hyo"> <i
+      class="fa fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <form #tipoSolicitudForm="ngForm">
+          <div class="row mt-3">
+            <div class="col-12">
+              <label>Nombre</label>
+              <select name="NombreRequerimiento" class="form-control" [(ngModel)]="codigoProceso" >
+                <option *ngFor="let procesoSolicitud of listaProcesoSolicitud" [ngValue]="procesoSolicitud.Codigo">
+                  {{procesoSolicitud.NombreProceso}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <label>Orden del Proceso</label>
+              <input type="number" class="form-control" name="nombreSolicitud"
+                     [(ngModel)]="agregarProceso.PosicionesSolicitud" [min]="1" >
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <button (click)="modalRef.hide()" class="btn float-right btn-sm btn-primary">
+                <i class="fa fa-times"> Cancelar </i></button> &nbsp;
+              <button  class="btn float-right btn-sm btn-success" (click)="Grabar()">
+                <i class="fa fa-save"></i> Guardar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

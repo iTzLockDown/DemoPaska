@@ -1,1 +1,85 @@
-<p>situacion-solicitud works!</p>
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Tipos de Requisitos para las solicitudes.
+
+  </div>
+
+  <div class="card-body">
+    <div class="text-right "><button class="btn btn-sm btn-youtube btn-cmac-hyo" (click)="agregar(estadoSolicitudTemplate)"><i class="fa fa-plus"></i> Nuevo </button></div>
+    <br>
+    <table class="table table-responsive-sm">
+      <thead>
+      <tr>
+        <th>N°</th>
+        <th>Descripcion</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let situacionSolicitud of listaSituacionSolicitud">
+        <td>*</td>
+        <td> {{this.situacionSolicitud.Descripcion}}</td>
+        <td>
+          <button class="btn btn-sm btn-dark" type="button" (click)="editar(situacionSolicitud, estadoSolicitudTemplate)"><i class="fa fa-edit" title="Editar" ></i></button> |
+          <button class="btn btn-sm btn-danger" type="button" (click)="Eliminar(this.situacionSolicitud.Codigo)"><i class="fa fa-trash" title="Eliminar"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="">Prev</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<ng-template #estadoSolicitudTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Tipo de Estado de Solicitud</h4>
+    <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-red-cmac-hyo"> <i
+      class="fa fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <form #estadoSolicitudForm="ngForm">
+          <div class="row mt-3">
+            <div class="col-12">
+              <label>Descripcion del Estado</label>
+              <input type="text" class="form-control" name="nombreSolicitud"
+                     [(ngModel)]="situacionSolicitudSeleccionado.Descripcion">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <button (click)="modalRef.hide()" class="btn float-right btn-sm btn-youtube btn-cmac-hyo">
+                <i class="fa fa-times"> Cancelar </i></button> &nbsp;
+              <button  class="btn float-right btn-sm btn-youtube btn-cmac-hyo" (click)="Grabar()" *ngIf="!situacionSolicitudSeleccionado.Codigo else elseBlock">
+                <i class="fa fa-save"></i> Guardar</button>
+              <ng-template #elseBlock>
+                <button class="btn float-right btn-sm btn-youtube btn-cmac-hyo" role="button" (click)='Actualiza()'><i class="fa fa-check-circle"></i> Editar</button>
+              </ng-template>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

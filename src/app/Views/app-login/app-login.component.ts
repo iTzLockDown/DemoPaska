@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {Login} from '../../Models/login';
 import {LoginService} from '../../Services/login.service';
 import alertifyjs from 'AlertifyJS';
-import {User} from '../../Models/user';
 
 @Component({
   selector: 'app-login',
@@ -19,9 +18,6 @@ export class AppLoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.login.Autenticado()){
-      alertifyjs
-        .alert("Información!!", "Ya estas Autenticado.", function(){
-        });
       this.router.navigate(['/dashboard']);
     }
   }

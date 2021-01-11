@@ -1,1 +1,82 @@
-<p>tipo-requerimiento works!</p>
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Tipos de Requisitos para las solicitudes.
+
+  </div>
+
+  <div class="card-body">
+    <div class="text-right "><button class="btn btn-sm btn-primary" (click)="agregar(tipoRequerimientoTemplate)"><i class="fa fa-plus"></i> Nuevo </button></div>
+    <br>
+    <table class="table table-responsive-sm">
+      <thead>
+      <tr>
+        <th>N°</th>
+        <th>Descripcion</th>
+        <th>Descripcion</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tipoRequisito of tipoRequisitos">
+        <td>*</td>
+        <td> {{this.tipoRequisito.NombreRequerimiento}}</td>
+        <td>
+          <button class="btn btn-sm btn-dark" type="button" (click)="editar(tipoRequisito, tipoRequerimientoTemplate)"><i class="fa fa-edit" title="Editar" ></i></button> |
+          <button class="btn btn-sm btn-danger" type="button" (click)="Eliminar(this.tipoRequisito.Codigo)"><i class="fa fa-trash" title="Eliminar"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="">Prev</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<ng-template #tipoRequerimientoTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Tipo de Requerimientos</h4>
+    <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-red-cmac-hyo"> <i
+      class="fa fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+            <form #tipoSolicitudForm="ngForm">
+              <div class="row mt-3">
+                <div class="col-12">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" name="nombreSolicitud"
+                         [(ngModel)]="tipoRequisitoSeleccionado.NombreRequerimiento">
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <button (click)="modalRef.hide()" class="btn float-right btn-sm btn-primary">
+                    <i class="fa fa-times"> Cancelar </i></button> &nbsp;
+                   <button  class="btn float-right btn-sm btn-success" (click)="guardarTipoRequerimiento()">
+                    <i class="fa fa-save"></i> Guardar</button>
+                </div>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

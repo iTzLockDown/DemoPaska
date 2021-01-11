@@ -10,13 +10,13 @@ import { AppError500Component } from './Views/Common/error/app-error500/app-erro
 import { AppError404Component } from './Views/Common/error/app-error404/app-error404.component';
 import {RouterModule} from '@angular/router';
 import {routes} from './app.routing';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppDefaultLayoutComponent} from './Views/Common/app-default-layout/app-default-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GestionSolicitudComponent } from './Views/Solicitud/gestion-solicitud/gestion-solicitud.component';
-import { FormularioTipoSolicitudComponent } from './Views/tipo-solicitud/formulario-tipo-solicitud/formulario-tipo-solicitud.component';
-
+import {DashboardComponent} from './Views/Common/dashboard/dashboard.component';
+import {TokenInterceptor} from './Interceptor/TokenInterceptor';
+import {ModalModule} from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,19 +28,22 @@ import { FormularioTipoSolicitudComponent } from './Views/tipo-solicitud/formula
     AppError500Component,
     AppError404Component,
     AppDefaultLayoutComponent,
-    GestionSolicitudComponent,
-    FormularioTipoSolicitudComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
   providers: [
-
-    {provide: LOCALE_ID, useValue: 'es-PE'}
+    {provide: LOCALE_ID, useValue: 'es-PE'},
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

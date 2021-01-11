@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AppDefaultLayoutComponent} from './Common/app-default-layout/app-default-layout.component';
-import {AppUsuarioComponent} from './app-usuario/app-usuario.component';
-import {AppError404Component} from './Common/error/app-error404/app-error404.component';
-import {FormUsuarioComponent} from './app-usuario/form-usuario/form-usuario.component';
 import {EstadoSolicitudComponent} from './estado-solicitud/estado-solicitud.component';
 import {SituacionSolicitudComponent} from './situacion-solicitud/situacion-solicitud.component';
 import {TipoRequerimientoComponent} from './tipo-requerimiento/tipo-requerimiento.component';
@@ -17,16 +14,14 @@ import {FormModeloContratoComponent} from './contrato/form-modelo-contrato/form-
 import {AtencionSolicitudComponent} from './Solicitud/atencion-solicitud/atencion-solicitud.component';
 import {RegistraSolicitudComponent} from './Solicitud/registra-solicitud/registra-solicitud.component';
 import {GestionSolicitudComponent} from './Solicitud/gestion-solicitud/gestion-solicitud.component';
+import {SolicitudProcesoComponent} from './tipo-solicitud/solicitud-proceso/solicitud-proceso.component';
+import {DashboardComponent} from './Common/dashboard/dashboard.component';
+import {AutentificacionGuard} from '../Guards/autentificacion.guard';
 export const routes: Routes = [
   {
     path: '', component: AppDefaultLayoutComponent,
+    canActivate:[AutentificacionGuard],
     children: [
-      {
-        path: 'usuario', component: AppUsuarioComponent
-      },
-      {
-        path: 'usuario/ucreate', component: FormUsuarioComponent
-      },
       {
         path: 'estadosolicitud', component: EstadoSolicitudComponent
       },
@@ -38,6 +33,9 @@ export const routes: Routes = [
       },
       {
         path: 'tiposolicitud', component: TipoSolicitudComponent
+      },
+      {
+        path: 'tiposolicitud/proceso/:id', component: SolicitudProcesoComponent
       },
       {
         path: 'clasificacioncontrato', component: ClasificacionContratoComponent
@@ -73,7 +71,7 @@ export const routes: Routes = [
       {
         path: 'registrarsolicitud', component: RegistraSolicitudComponent
       },
-      { path: '**', component: AppError404Component }
+      { path: '**', component: DashboardComponent }
     ]
   }
 ];
