@@ -68,6 +68,7 @@ export class _ProcesoSolicitudApi{
   public static ListarCodigo = _ProcesoSolicitudApi.Prefijo+'traercodigo?CodigoTipoSolicitud=';
   public static Listar = _ProcesoSolicitudApi.Prefijo+'listar';
   public static AgregarProceso = _ProcesoSolicitudApi.Prefijo+'agregarproceso';
+  public static EliminarProceso = _ProcesoSolicitudApi.Prefijo+'eliminarproceso';
 }
 export class _SituacionSolicitudApi{
   public static Prefijo = RoutesAPI.API_ENDPOINT+'/situacionsolicitud/';
@@ -86,6 +87,7 @@ export class _TipoSolicitudApi{
   public static Prefijo = RoutesAPI.API_ENDPOINT+'/tiposolicitud/';
   public static Listar = _TipoSolicitudApi.Prefijo+'listar';
   public static Grabar = _TipoSolicitudApi.Prefijo+'grabar';
+  public static Actualizar = _TipoSolicitudApi.Prefijo+'actualizar';
   public static Eliminar = _TipoSolicitudApi.Prefijo+'eliminar?codigoTipoSolicitud=';
 }
 export class _SolicitudRequisotoApi{

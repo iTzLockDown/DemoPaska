@@ -16,41 +16,41 @@ export class AsesorService {
   AsesoresColaUnica(): Observable<AsesorResponse[]> {
     return this.http.get<AsesorResponse[]>(`${_AsesorApi.ListaColaUnica}`).pipe(
       catchError(e => {
-        if (e.status ==400) return throwError(e);
+        if (e.status === 400) {return throwError(e); }
       })
     );
   }
 
-  AsesoresColaMultiple():Observable<AsesorResponse[]>{
+  AsesoresColaMultiple(): Observable<AsesorResponse[]> {
 
     return this.http.get<AsesorResponse[]>(`${_AsesorApi.ListaColaMultiple}`).pipe(
       catchError(e => {
-        if (e.status ==400) return throwError(e);
+        if (e.status === 400) {return throwError(e); }
       })
     );
   }
 
-  AsignaAsesoresColaMultiple(asesorRequest: AsesorRequest):Observable<any>{
+  AsignaAsesoresColaMultiple(asesorRequest: AsesorRequest): Observable<any> {
     return this.http.post<any>(`${_AsesorApi.AsignaColaMultiple}`, asesorRequest).pipe(
-      catchError(e=>{
-        if (e.status==400){
+      catchError(e => {
+        if (e.status === 400) {
           return throwError(e);
         }
       })
     );
   }
 
-  AsignaAsesoresColaUnica(codigoAsesor: string):Observable<any>{
+  AsignaAsesoresColaUnica(codigoAsesor: string): Observable<any> {
     return this.http.delete<any>(`${_AsesorApi.AsignaColaUnica}${codigoAsesor}`).pipe(
-      catchError(e=>{
-        if (e.status==400){
+      catchError(e => {
+        if (e.status === 400) {
           return throwError(e);
         }
       })
     );
   }
 
-  OficinaAsesor(codigoAsesor: string):Observable<OficinaResponse[]> {
+  OficinaAsesor(codigoAsesor: string): Observable<OficinaResponse[]> {
     return this.http.get<OficinaResponse[]>(`${ _AsesorApi.OficinaAsesor}${codigoAsesor}`);
   }
 }

@@ -22,6 +22,7 @@ export class TipoSolicitudComponent implements OnInit {
   req: TipoRequisitoResponse;
   tipoSolicitud: TipoSolicitudRequest;
   requisito: TipoRequisitoResponse;
+  requisitosSolicitud: TipoRequisitoResponse;
   requisitos : TipoRequerimientoRequest[];
   constructor(private modalService: BsModalService,
               private tipoSolicitudService: TipoSolicitudService,
@@ -29,7 +30,7 @@ export class TipoSolicitudComponent implements OnInit {
               private tipoSolicitudRequisitoService: TipoSolicitudRequisitoService
               ) {
     this.tipoSolicitud = new TipoSolicitudRequest();
-    this.requisito = new TipoRequisitoResponse();
+    this.requisitosSolicitud = new TipoRequisitoResponse();
     this.requisitos =[];
   }
 
@@ -39,6 +40,22 @@ export class TipoSolicitudComponent implements OnInit {
   }
   Grabar(){
     this.tipoSolicitudService.Grabar(this.tipoSolicitud).subscribe(
+      (res: boolean) => {
+        if (res){
+          this.modalRef.hide();
+          alertifyjs.success('¡Operación exitosa!');
+          this.ListarTipoSolicitud();
+        }
+      }
+      , (err) => {
+        alertifyjs.error('Error, verificar informacion.');
+      }
+    );
+    this.ListarTipoSolicitud()
+  }
+  Actualizar(){
+    console.log('aki');
+    this.tipoSolicitudService.Actualizar(this.tipoSolicitud).subscribe(
       (res: boolean) => {
         if (res){
           this.modalRef.hide();
@@ -69,13 +86,21 @@ export class TipoSolicitudComponent implements OnInit {
   }
 
   agregarRequisito() {
-    if (this.requisito.Codigo === undefined)
-      return;
+    if (this.requisito == undefined)
+    {
+      return; }
 
-    if (this.tipoSolicitud.Requisitos.filter(e => e.Codigo == this.requisito.Codigo).length > 0)
+    if (this.tipoSolicitud.Requisitos.filter(e => e.Codigo == parseInt(this.requisito.toString()) ).length > 0)
+    {
       return;
-    this.requisito.CodigoTipoSolicitud = this.requisito.Codigo;
-    this.tipoSolicitud.Requisitos.push(this.requisito);
+    }
+
+      console.log(this.requisito);
+      console.log(this.requisito.NombreRequerimiento);
+      // console.log(this.requisito.NombreRequerimiento);
+      // this.requisitosSolicitud.Codigo = parseInt(this.requisito.toString());
+      // this.tipoSolicitud.Requisitos.push(this.requisitosSolicitud);
+      // console.log(this.tipoSolicitud.Requisitos);
   }
   quitarRequisito(requisito: TipoRequisitoResponse) {
     const index = this.tipoSolicitud.Requisitos.indexOf(requisito, 0);
@@ -125,6 +150,7 @@ export class TipoSolicitudComponent implements OnInit {
     this.abrirModal(template);
 
   }
+
 
   abrirModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(

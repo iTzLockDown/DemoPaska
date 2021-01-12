@@ -42,12 +42,10 @@ export class SolicitudProcesoComponent implements OnInit {
       });
   }
   Listar() {
-    this.procesoSolicitudService.Listar()
-      .subscribe(
-        response => this.listaProcesoSolicitud = response
-      );
-
-
+    // this.procesoSolicitudService.Listar()
+    //   .subscribe(
+    //     response => this.listaProcesoSolicitud = response
+    //   );
   }
   Grabar()
   {
@@ -78,6 +76,26 @@ export class SolicitudProcesoComponent implements OnInit {
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'gray' })
+    );
+  }
+
+  EliminarProceso(codigoTipoProceso: string , numeroOrden: string) {
+    this.agregarProceso.CodigoProceso = parseInt(codigoTipoProceso);
+    this.agregarProceso.CodigoSolicitud = this.codigoSolicitud;
+    this.agregarProceso.PosicionesSolicitud =parseInt(numeroOrden);
+    this.agregarProceso.Usuario = 'ntrucios';
+    this.agregarProceso.Terminal = 'CYREREC09';
+
+    this.procesoSolicitudService.EliminarProceso(this.agregarProceso).subscribe(
+      (res: boolean) => {
+        if (res){
+          alertifyjs.success('¡Operación exitosa!');
+          this.ListarProcesos();
+        }
+      }
+      , (err) => {
+        alertifyjs.error('Error, verificar informacion.');
+      }
     );
   }
 

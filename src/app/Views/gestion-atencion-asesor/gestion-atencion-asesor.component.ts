@@ -14,33 +14,30 @@ export class GestionAtencionAsesorComponent implements OnInit {
   asesorColaMultiple: AsesorResponse[];
   asesorAsigna: AsesorRequest;
 
-  constructor(private router: Router, private asesorService: AsesorService) { }
-  ngOnInit(){
-    this.asesorService.AsesoresColaUnica()
-      .subscribe(asesor => this.asesorColaUnica = asesor);
+  constructor(private router: Router, private asesorService: AsesorService) {
 
-    this.asesorService.AsesoresColaMultiple()
-      .subscribe(asesor => this.asesorColaMultiple = asesor);
   }
-
-  AsignaAsesoresColaMultiple(codigoUsuario: string ):void
-  {
-
-
+  ngOnInit() {
+    this.Actualiza();
+  }
+  AsignaAsesoresColaMultiple(codigoUsuario: string ): void {
     this.asesorAsigna = new AsesorRequest();
     this.asesorAsigna.UsuarioAsesor = codigoUsuario;
-    this.asesorAsigna.CodigoOficina = 'string';
+    this.asesorAsigna.CodigoOficina = '001';
     this.asesorAsigna.Usuario = 'UsuarioWeb';
     this.asesorAsigna.Terminal = 'CYRREC04';
-    this.asesorService.AsignaAsesoresColaMultiple(this.asesorAsigna).subscribe((response)=> alertifyjs.success('Se agrego el usuario.'));
-    this.ngOnInit();
+    this.asesorService.AsignaAsesoresColaMultiple(this.asesorAsigna).subscribe((response) => alertifyjs.success('Se agrego el usuario.'));
   }
-  AsignaAsesoresColaUnica(codigoUsuario: string ):void
-  {
-    this.asesorService.AsignaAsesoresColaUnica(codigoUsuario).subscribe((response)=> alertifyjs.error('Se ha quitado el usuario.'));
-    this.ngOnInit();
+  AsignaAsesoresColaUnica(codigoUsuario: string ): void {
+    this.asesorService.AsignaAsesoresColaUnica(codigoUsuario).subscribe((response) => alertifyjs.error('Se ha quitado el usuario.'));
   }
-  Actualiza(): void{
+  Actualiza(): void {
 
+    this.asesorService.AsesoresColaUnica()
+      .subscribe(asesorColaUnica => this.asesorColaUnica = asesorColaUnica);
+
+    this.asesorService.AsesoresColaMultiple()
+      .subscribe(asesorColaMultiple => this.asesorColaMultiple = asesorColaMultiple);
   }
+
 }

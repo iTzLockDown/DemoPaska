@@ -21,7 +21,7 @@
                 <td>{{ asesor.cCodUsuWin }} </td>
                 <td>{{asesor.cNomUsuAdm}}</td>
                 <td>
-                  <button class="btn btn-sm btn-dark" type="button"><i class="fa fa-arrow-right" title="Asignar a cola multiple" (click)="AsignaAsesoresColaMultiple(asesor.cCodUsuWin)"></i></button>
+                  <button class="btn btn-sm btn-dark" type="button" (click)="AsignaAsesoresColaMultiple(asesor.cCodUsuWin); Actualiza()"><i class="fa fa-arrow-right" title="Asignar a cola multiple" ></i></button>
                 </td>
               </tr>
               </tbody>
@@ -50,7 +50,7 @@
                 <td>{{asesorMultiple.cNomUsuAdm}}</td>
 
                 <td>
-                  <button class="btn btn-sm btn-dark" type="button" (click)="AsignaAsesoresColaUnica(asesorMultiple.cCodUsuWin)"><i class="fa fa-arrow-left" title="Asginar a cola unica" ></i></button> |
+                  <button class="btn btn-sm btn-dark" type="button" (click)="AsignaAsesoresColaUnica(asesorMultiple.cCodUsuWin); Actualiza()"><i class="fa fa-arrow-left" title="Asginar a cola unica" ></i></button> |
                   <button class="btn btn-sm btn-dropbox" type="button" [routerLink]="['asignaoficina', this.asesorMultiple.cCodUsuWin, this.asesorMultiple.cNomUsuAdm]"><i class="fa fa-plus-square-o" title="Asignar Oficinas" ></i></button>
                 </td>
               </tr>

@@ -1,5 +1,8 @@
 export class ProcesoSolicitudResponse{
   Codigo : string;
   NombreProceso : string;
-  DescripcinProceso : string;
+  DescripcionProceso : string;
+  CodigoTipoProceso : string;
+  NumeroOrden : string;
 }
+

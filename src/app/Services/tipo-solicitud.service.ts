@@ -25,6 +25,15 @@ export class TipoSolicitudService {
       })
     );
   }
+
+  Actualizar(tipoSolicitud: TipoSolicitudRequest): Observable<any>{
+    return this.http.put<any>( `${_TipoSolicitudApi.Actualizar}`, tipoSolicitud).pipe(
+      catchError(e => {
+        if (e.status ==400) return throwError(e);
+      })
+    );
+  }
+
   Eliminar(codigoTipoSolicitud: string): Observable<any>{
     return this.http.delete<any>( `${_TipoSolicitudApi.Eliminar}${codigoTipoSolicitud}`).pipe(
       catchError(e => {

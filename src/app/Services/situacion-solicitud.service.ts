@@ -29,13 +29,13 @@ export class SituacionSolicitudService {
     );
   }
   Actualizar(situacionSolicitud: SituacionSolicitudRequest):Observable<any>  {
-    return this.http.post<any>( `${_SituacionSolicitudApi.Actualizar}`,situacionSolicitud ).pipe(
+    return this.http.put<any>( `${_SituacionSolicitudApi.Actualizar}`,situacionSolicitud ).pipe(
       catchError(e => {
         if (e.status ==400) return throwError(e);
       })
     );
   }
-  Eliminar(situacionSolicitud: EstadoSolicitudRequest):Observable<any>  {
+  Eliminar(situacionSolicitud: SituacionSolicitudRequest):Observable<any>  {
     return this.http.put<any>( `${_SituacionSolicitudApi.Eliminar}`,situacionSolicitud ).pipe(
       catchError(e => {
         if (e.status ==400) return throwError(e);

@@ -4,6 +4,7 @@ import alertifyjs from 'AlertifyJS';
 import {SituacionSolicitudService} from '../../Services/situacion-solicitud.service';
 import {SituacionResponse} from '../../Models/Response/SituacionResponse';
 import {SituacionSolicitudRequest} from '../../Models/Request/SituacionSolicitudRequest';
+import {EstadoSolicitudRequest} from '../../Models/Request/EstadoSolicitudRequest';
 @Component({
   selector: 'app-situacion-solicitud',
   templateUrl: './situacion-solicitud.component.html'
@@ -64,9 +65,23 @@ export class SituacionSolicitudComponent implements OnInit {
     this.oEstadoSolicitudRequest.Terminal = 'CYRREC04';
   }
 
-  Eliminar(codigoEstado: string)
+  Eliminar(codigo: string)
   {
 
+    this.oEstadoSolicitudRequest.CodigoSolicitud = codigo.toString();
+    this.oEstadoSolicitudRequest.Usuario = 'ntrucios';
+    this.oEstadoSolicitudRequest.Terminal = 'CYRREC04';
+    this.situacionSolicitudService.Eliminar(this.oEstadoSolicitudRequest).subscribe(
+      (res: boolean) => {
+        if (res){
+          alertifyjs.warning('¡Operación exitosa!');
+          this.Listar();
+        }
+      }
+      , (err) => {
+        alertifyjs.error('Error, verificar informacion.');
+      }
+    );
   }
   agregar(template: TemplateRef<any>) {
     this.situacionSolicitudSeleccionado = new SituacionResponse();

@@ -29,8 +29,7 @@ export class TipoRequisitoService {
     );
   }
   Eliminar(codigoTipoRequerimiento: number): Observable<any>{
-    let params = new URLSearchParams();
-    return this.http.post<any>( `${_TipoRequisitoApi.Eliminar}${codigoTipoRequerimiento}`,params).pipe(
+    return this.http.delete<any>( `${_TipoRequisitoApi.Eliminar}${codigoTipoRequerimiento}`).pipe(
       catchError(e => {
         if (e.status ==400) return throwError(e);
       })

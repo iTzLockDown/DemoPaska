@@ -84,7 +84,7 @@
 
             <div class="row mt-3">
               <div class="col-10">
-                <select name="NombreRequerimiento" class="form-control" [(ngModel)]="requisito" >
+                <select  [(ngModel)]="requisito" name="requisito" class="form-control" >
                   <option *ngFor="let tipoRequisito of tipoRequisitoResponse" [ngValue]="tipoRequisito.Codigo">
                     {{tipoRequisito.NombreRequerimiento}}
                   </option>
@@ -129,8 +129,11 @@
       <div class="col-12">
         <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-youtube btn-cmac-hyo">
           <i class="fa fa-times"> Cancelar</i></button>
-        <button  class="float-right btn btn-sm btn-youtube btn-cmac-hyo mr-3"  (click)="Grabar()">
+        <button  class="btn float-right btn-sm btn-youtube btn-cmac-hyo" (click)="Grabar()" *ngIf="!tipoSolicitud.CodigoTipoSolicitud else elseBlock">
           <i class="fa fa-save"></i> Guardar</button>
+        <ng-template #elseBlock>
+          <button class="btn float-right btn-sm btn-youtube btn-cmac-hyo" role="button" (click)='Actualizar()'><i class="fa fa-check-circle"></i> Editar</button>
+        </ng-template>
       </div>
     </div>
   </div>

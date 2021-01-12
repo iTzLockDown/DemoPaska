@@ -36,4 +36,13 @@ export class ProcesoSolicitudService {
       );
   }
 
+  EliminarProceso(eliminarProcesoRequest: AgregarProcesoRequest): Observable<any> {
+    return this.http.put(`${_ProcesoSolicitudApi.EliminarProceso}`,eliminarProcesoRequest)
+      .pipe(
+        catchError(e => {
+          if (e.status == 400)return throwError(e);
+        })
+      );
+  }
+
 }

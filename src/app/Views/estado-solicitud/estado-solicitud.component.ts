@@ -66,7 +66,20 @@ export class EstadoSolicitudComponent implements OnInit {
 
   Eliminar(codigoEstado: string)
   {
-
+    this.oEstadoSolicitudRequest.CodigoEstado = codigoEstado.toString();
+    this.oEstadoSolicitudRequest.Usuario = 'ntrucios';
+    this.oEstadoSolicitudRequest.Terminal = 'CYRREC04';
+    this.estadoSolicitudService.Eliminar(this.oEstadoSolicitudRequest).subscribe(
+      (res: boolean) => {
+        if (res){
+          alertifyjs.warning('¡Operación exitosa!');
+          this.Listar();
+        }
+      }
+      , (err) => {
+        alertifyjs.error('Error, verificar informacion.');
+      }
+    );
   }
   agregar(template: TemplateRef<any>) {
     this.estadoSolicitudSeleccionado = new EstadoResponse();

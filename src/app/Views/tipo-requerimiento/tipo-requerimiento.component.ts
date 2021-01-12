@@ -53,7 +53,6 @@ export class TipoRequerimientoComponent implements OnInit {
     this.tipoRequisitoService.Eliminar(codigoRequerimiento).subscribe(
       (res: boolean) => {
         if (res){
-          this.modalRef.hide();
           alertifyjs.warning('¡Operación exitosa!');
           this.Listar();
         }
