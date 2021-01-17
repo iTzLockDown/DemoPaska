@@ -1,9 +1,8 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ClienteResponse} from '../../../Models/Response/ClienteResponse';
 import {BuscarClienteService} from '../../../Services/buscar-cliente.service';
 import {CreditoClienteResponse} from '../../../Models/Response/CreditoClienteResponse';
 import {TipoSolicitudService} from '../../../Services/tipo-solicitud.service';
-import {TipoSolicitudRequest} from '../../../Models/Request/TipoSolicitudRequest';
 import {TipoSolicitudRequisitoService} from '../../../Services/tipo-solicitud-requisito.service';
 import {RequisitosRequest} from '../../../Models/Request/RequisitosRequest';
 import {SituacionSolicitudService} from '../../../Services/situacion-solicitud.service';
@@ -17,6 +16,10 @@ import alertifyjs from 'AlertifyJS';
 import {Router} from '@angular/router';
 import {TipoSolicitudResponse} from '../../../Models/Response/TipoSolicitudResponse';
 import {TipoSolicitudRequisitoResponse} from '../../../Models/Response/TipoSolicitudRequisitoResponse';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {GarantiaService} from '../../../Services/garantia.service';
+import {GarantiaLineaCredito} from '../../../Models/Response/GarantiaLineaCredito';
+import {DatoGarantiaResponse} from '../../../Models/Response/DatoGarantiaResponse';
 @Component({
   selector: 'app-registra-solicitud',
   templateUrl: './registra-solicitud.component.html'
@@ -42,13 +45,18 @@ export class RegistraSolicitudComponent implements OnInit {
   creditoData : CreditoClienteResponse = new CreditoClienteResponse();
   private archivoSeleccionado: File;
   recibeCodigo: string ='';
-  constructor(private router: Router,
+  modalRef: BsModalRef;
+  garantiaLineaCredito : GarantiaLineaCredito[];
+  datoGarantiaResponse : DatoGarantiaResponse[];
+  constructor(private modalService: BsModalService,
+              private router: Router,
               private buscarCliente: BuscarClienteService,
               private tipoSolicitud: TipoSolicitudService,
               private tipoSolicitudRequerimineto: TipoSolicitudRequisitoService,
               private situacionSolicitudService: SituacionSolicitudService,
               private estadoSolicitudService: EstadoSolicitudService,
-              private atencionSolicitudService: AtencionSolicitudService) { }
+              private atencionSolicitudService: AtencionSolicitudService,
+              private garantiaService: GarantiaService) { }
 
   ngOnInit(): void {
     this.tipoSolicitud.Listar().subscribe(
@@ -120,10 +128,12 @@ export class RegistraSolicitudComponent implements OnInit {
   ConstruyeGrabar()
   {
     this.garantia = new GarantiaRequest();
-    this.garantia.Codigo = "1";
+    this.garantia.Codigo = "001";
+    this.garantia.Tipo = "nrum"
     this.garantias.push(this.garantia);
     this.garantia = new GarantiaRequest();
     this.garantia.Codigo = "2";
+    this.garantia.Tipo = "nrum"
     this.garantias.push(this.garantia);
 
 
@@ -144,6 +154,35 @@ export class RegistraSolicitudComponent implements OnInit {
           alertifyjs.success("Se registro la solicitud de Atencion.!!")
       }
     );
-    console.log(this.atencionSolicitudService);
+  }
+
+  LineaCredito(codigoCliente: string, codigoOficina : string){
+    this.garantiaService.LineaCredito(codigoCliente, codigoOficina).subscribe(
+      response => this.garantiaLineaCredito = response
+    );
+  }
+  DatoGarantia(codigoCliente: string, codigoOficina : string)
+  {
+    this.garantiaService.DatosGarantia(codigoCliente, codigoOficina).subscribe(
+      response => this.datoGarantiaResponse = response
+    );
+
+  }
+
+  DatosGarantiaModal(template: TemplateRef<any>) {
+    this.DatoGarantia(this.clienteData.CodigoCliente, '002')
+    this.abrirModal(template);
+  }
+
+  LineaCreditoGarantiaModal(template: TemplateRef<any>) {
+    this.LineaCredito(this.clienteData.CodigoCliente, '002')
+    this.abrirModal(template);
+  }
+
+  abrirModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray' })
+    );
   }
 }

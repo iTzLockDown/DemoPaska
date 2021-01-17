@@ -17,6 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DashboardComponent} from './Views/Common/dashboard/dashboard.component';
 import {TokenInterceptor} from './Interceptor/TokenInterceptor';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import { PlantillaContratoComponent } from './Views/plantilla-contrato/plantilla-contrato.component';
+PdfMakeWrapper.setFonts(pdfFonts);
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +33,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
     AppError404Component,
     AppDefaultLayoutComponent,
     DashboardComponent,
+    PlantillaContratoComponent,
   ],
   imports: [
     BrowserModule,

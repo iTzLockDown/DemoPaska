@@ -17,6 +17,7 @@ import {GestionSolicitudComponent} from './Solicitud/gestion-solicitud/gestion-s
 import {SolicitudProcesoComponent} from './tipo-solicitud/solicitud-proceso/solicitud-proceso.component';
 import {DashboardComponent} from './Common/dashboard/dashboard.component';
 import {AutentificacionGuard} from '../Guards/autentificacion.guard';
+import {PlantillaContratoComponent} from './plantilla-contrato/plantilla-contrato.component';
 export const routes: Routes = [
   {
     path: '', component: AppDefaultLayoutComponent,
@@ -70,6 +71,9 @@ export const routes: Routes = [
       },
       {
         path: 'registrarsolicitud', component: RegistraSolicitudComponent
+      },
+      {
+        path: 'plantillascontrato', component: PlantillaContratoComponent
       },
       { path: '**', component: DashboardComponent }
     ]

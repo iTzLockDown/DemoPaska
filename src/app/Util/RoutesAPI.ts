@@ -94,6 +94,12 @@ export class _SolicitudRequisotoApi{
   public static Prefijo = RoutesAPI.API_ENDPOINT+'/tiposolicitudrequisito/';
   public static Listar = _SolicitudRequisotoApi.Prefijo+'listar?codigoTipoSolicitud=';
 }
+export class _GarantiaApi{
+  public static Prefijo = RoutesAPI.API_ENDPOINT+'/tiposolicitud/';
+  public static LineaCreditoGarantia = _GarantiaApi.Prefijo+'/lineacreditogarantia?codigoCliente=';
+  public static DatoGarantia = _GarantiaApi.Prefijo+'/datosgarantia?codigoCliente=';
+}
+
 export class _Login{
   public static Prefijo = RoutesAPI.API_ENDPOINT+'/seguridad/';
   public static Token = _Login.Prefijo+'token';

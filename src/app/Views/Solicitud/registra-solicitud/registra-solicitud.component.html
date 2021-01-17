@@ -9,7 +9,8 @@
     Datos del Cliente Codigo : <strong> </strong> </div>
   <div class="card-body">
     <div class="text-right ">
-      <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-github" (click)="AbrirCreditoCliente(this.clienteData.CodigoCliente)"><i class="fa fa-object-group"></i> Ver Detalle de Garantias</button> |
+      <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-spotify" (click)="LineaCreditoGarantiaModal(lineaCreditoGarantiaTemplate)"><i class="fa fa-object-group"></i> Linea de Credito</button> |
+      <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-github" (click)="DatosGarantiaModal(garantiaTemplate)"><i class="fa fa-object-group"></i> Datos de Garantias</button> |
       <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-reddit" (click)="AbrirCreditoCliente(this.clienteData.CodigoCliente)"><i class="fa fa-credit-card"></i> Ver Detalle de Credito</button> |
       <button  class="btn btn-sm btn-outline-primary" (click)="AbrirBusquedaCliente()"><i class="fa fa-user-plus"></i> Buscar Cliente</button></div>
     <br>
@@ -106,3 +107,119 @@
       <i class="fa fa-arrow-left"></i> Regresar</button>
   </div>
 </div>
+
+
+
+<ng-template #garantiaTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Garantias Cliente</h4>
+    <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-red-cmac-hyo"> <i
+      class="fa fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+
+          <div class="row mt-3">
+            <div class="col-12">
+              <div class="row mt-3">
+                <div class="col-12">
+                  <div class="table-responsive table-search">
+                    <table class="table table-striped">
+                      <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let datoGarantia of datoGarantiaResponse">
+                        <td> {{datoGarantia.cCodGarCli}} </td>
+                        <td> {{datoGarantia.cCodTipGar}} </td>
+                        <td>
+                          <div class="text-center">
+                            <button
+                                    class="btn btn-sm btn-youtube btn-cmac-hyo"> <i
+                              class="fa fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12">
+              <button (click)="modalRef.hide()" class="btn float-right btn-sm btn-primary">
+                <i class="fa fa-times"> Cancelar </i></button> &nbsp;
+              <button  class="btn float-right btn-sm btn-success">
+                <i class="fa fa-save"></i> Guardar</button>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #lineaCreditoGarantiaTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Linea de Credito Garantia</h4>
+    <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-red-cmac-hyo"> <i
+      class="fa fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <div class="row mt-3">
+              <div class="col-12">
+                <div class="table-responsive table-search">
+                  <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th>Codigo</th>
+                      <th>Tipo Garantia </th>
+                      <th>Saldo Capital</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let lineaCredito of garantiaLineaCredito">
+                      <td> {{lineaCredito.CodigoGarantia}} </td>
+                      <td> {{lineaCredito.CodigoTipoGarantia}} </td>
+                      <td> {{lineaCredito.SaldoCapitalGar}} </td>
+                      <td>
+                        <div class="text-center">
+                          <button
+                            class="btn btn-sm btn-youtube btn-cmac-hyo"> <i
+                            class="fa fa-trash"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <button (click)="modalRef.hide()" class="btn float-right btn-sm btn-primary">
+              <i class="fa fa-times"> Cancelar </i></button> &nbsp;
+            <button  class="btn float-right btn-sm btn-success">
+              <i class="fa fa-save"></i> Guardar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
