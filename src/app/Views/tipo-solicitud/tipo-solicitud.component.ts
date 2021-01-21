@@ -24,6 +24,7 @@ export class TipoSolicitudComponent implements OnInit {
   requisito: TipoRequisitoResponse;
   requisitosSolicitud: TipoRequisitoResponse;
   requisitos : TipoRequerimientoRequest[];
+  nameRequisito: string;
   constructor(private modalService: BsModalService,
               private tipoSolicitudService: TipoSolicitudService,
               private tipoRequisitoService: TipoRequisitoService,
@@ -86,21 +87,13 @@ export class TipoSolicitudComponent implements OnInit {
   }
 
   agregarRequisito() {
-    if (this.requisito == undefined)
-    {
-      return; }
-
-    if (this.tipoSolicitud.Requisitos.filter(e => e.Codigo == parseInt(this.requisito.toString()) ).length > 0)
-    {
+    if (this.requisito.Codigo === undefined)
       return;
-    }
 
-      console.log(this.requisito);
-      console.log(this.requisito.NombreRequerimiento);
-      // console.log(this.requisito.NombreRequerimiento);
-      // this.requisitosSolicitud.Codigo = parseInt(this.requisito.toString());
-      // this.tipoSolicitud.Requisitos.push(this.requisitosSolicitud);
-      // console.log(this.tipoSolicitud.Requisitos);
+    if (this.tipoSolicitud.Requisitos.filter(e => e.Codigo == this.requisito.Codigo).length > 0)
+      return;
+    this.requisito.CodigoTipoSolicitud = this.requisito.Codigo;
+    this.tipoSolicitud.Requisitos.push(this.requisito);
   }
   quitarRequisito(requisito: TipoRequisitoResponse) {
     const index = this.tipoSolicitud.Requisitos.indexOf(requisito, 0);

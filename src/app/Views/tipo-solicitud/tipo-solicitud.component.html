@@ -85,7 +85,7 @@
             <div class="row mt-3">
               <div class="col-10">
                 <select  [(ngModel)]="requisito" name="requisito" class="form-control" >
-                  <option *ngFor="let tipoRequisito of tipoRequisitoResponse" [ngValue]="tipoRequisito.Codigo">
+                  <option *ngFor="let tipoRequisito of tipoRequisitoResponse" [ngValue]="tipoRequisito" >
                     {{tipoRequisito.NombreRequerimiento}}
                   </option>
                 </select>
