@@ -1,2 +1,53 @@
-<p>plantilla-contrato works!</p>
-<button (click)="generatePDF()">generar pddf</button>
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Plantillas de Plantillas
+
+  </div>
+
+  <div class="card-body">
+    <div class="text-right "><a href="" class="btn btn-sm btn-outline-info" [routerLink]="'createcontrato'"><i class="fa fa-file-word-o"></i> Nuevo Contrato</a></div>
+    <br>
+    <table class="table table-responsive-sm">
+      <thead>
+      <tr>
+        <th>N°</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let contrato of modeloContrato">
+        <td>*</td>
+        <td> {{this.contrato.Nombre}}</td>
+        <td> {{this.contrato.Clasificacion}}</td>
+        <td>
+          <button class="btn btn-sm btn-dark" type="button" [routerLink]="'generarcontrato'"><i class="fa fa-edit" title="Generar Contrato" ></i></button>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="">Prev</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

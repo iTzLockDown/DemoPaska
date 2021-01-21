@@ -42,10 +42,10 @@ export class SolicitudProcesoComponent implements OnInit {
       });
   }
   Listar() {
-    // this.procesoSolicitudService.Listar()
-    //   .subscribe(
-    //     response => this.listaProcesoSolicitud = response
-    //   );
+    this.procesoSolicitudService.Listar()
+      .subscribe(
+        response => this.listaProcesoSolicitud = response
+      );
   }
   Grabar()
   {

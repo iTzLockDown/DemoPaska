@@ -18,6 +18,7 @@ import {SolicitudProcesoComponent} from './tipo-solicitud/solicitud-proceso/soli
 import {DashboardComponent} from './Common/dashboard/dashboard.component';
 import {AutentificacionGuard} from '../Guards/autentificacion.guard';
 import {PlantillaContratoComponent} from './plantilla-contrato/plantilla-contrato.component';
+import {GenerarContratoComponent} from './generar-contrato/generar-contrato.component';
 export const routes: Routes = [
   {
     path: '', component: AppDefaultLayoutComponent,
@@ -74,6 +75,9 @@ export const routes: Routes = [
       },
       {
         path: 'plantillascontrato', component: PlantillaContratoComponent
+      },
+      {
+        path: 'plantillascontrato/generarcontrato', component: GenerarContratoComponent
       },
       { path: '**', component: DashboardComponent }
     ]
