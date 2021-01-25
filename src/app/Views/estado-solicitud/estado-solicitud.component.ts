@@ -40,8 +40,7 @@ export class EstadoSolicitudComponent implements OnInit {
       }
     );
   }
-  Actualiza()
-  {
+  Actualiza() {
     this.AsignarData();
     this.estadoSolicitudService.Actualizar(this.oEstadoSolicitudRequest).subscribe(
       (res: boolean) => {

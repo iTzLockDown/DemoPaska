@@ -6,6 +6,25 @@
   </div>
 
   <div class="card-body">
+    <div class="text-left">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Buscar por Estado de la Solicitud</label>
+        <div class="col-md-6">
+          <select name="requisito" class="form-control" [(ngModel)]="objetoEstado">
+            <option *ngFor="let estado of estadoResponse" [ngValue]="estado" >
+              {{estado.Descripcion}}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-primary" (click)="Prueba()"> <i class="fa fa-search"></i> buscar</button>
+        <label class="col-md-3 col-form-label"></label>
+
+      </div>
+
+
+
+    </div>
+    <br>
     <table class="table table-responsive">
       <thead>
       <tr>
@@ -20,12 +39,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let solicitud of atencionSolicitud">
+      <tr *ngFor="let solicitud of estadosSolicitud">
         <td>{{ solicitud.DescripcionOficina }} </td>
         <td>{{solicitud.NombreCliente}}</td>
         <td>{{solicitud.NombreAsesor}}</td>
         <td> {{solicitud.MontoCredito}}</td>
-        <td> {{solicitud.Situacion}}</td>
+        <td> {{solicitud.Estado}}</td>
         <td> {{solicitud.Tiempo}}</td>
         <td> {{solicitud.NumeroGarantias}}</td>
         <td>
