@@ -8,7 +8,7 @@ import {AccionSolicitudResponse} from '../../../../Models/Response/AccionSolicit
 })
 export class EstadoProcesoSolicitudComponent implements OnInit {
   @Input() codigoSolicitud: string;
-   accionSolicitud:AccionSolicitudResponse[];
+   accionSolicitud: AccionSolicitudResponse[];
   @Output() estadoModalProceso = new EventEmitter<boolean>();
 
   constructor(private estadoProcesoSolicitud: EstadoProcesoSolicitudService) { }
@@ -18,7 +18,7 @@ export class EstadoProcesoSolicitudComponent implements OnInit {
       response => this.accionSolicitud = response
     );
   }
-  CerrarBusqueda(){
+  CerrarBusqueda() {
     this.estadoModalProceso.emit(false);
   }
 }

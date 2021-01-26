@@ -36,5 +36,30 @@ export class AtencionSolicitudService {
       })
     );
   }
+  ListaTipo(codigoAsesor:string, codigoSituacion: string): Observable<AtencionSolicitudResponse[]> {
 
+    return this.http.get<AtencionSolicitudResponse[]>(`${_AtencionSolicitudApi.ListaTipo}${codigoAsesor}&codigoSituacion=${codigoSituacion}`).pipe(
+      catchError(e => {
+        if (e.status ==400) return throwError(e);
+      })
+    );
+  }
+
+  ListaDevuelto(codigoAsesor:string, codigoSituacion: string): Observable<AtencionSolicitudResponse[]> {
+
+    return this.http.get<AtencionSolicitudResponse[]>(`${_AtencionSolicitudApi.ListaDevuelto}${codigoAsesor}&numDevolucion=${codigoSituacion}`).pipe(
+      catchError(e => {
+        if (e.status ==400) return throwError(e);
+      })
+    );
+  }
+
+  ListaAsesorSolicitud(codigoAsesor:string, codigoSituacion: string): Observable<AtencionSolicitudResponse[]> {
+
+    return this.http.get<AtencionSolicitudResponse[]>(`${_AtencionSolicitudApi.ListaAsesorSolicitud}${codigoAsesor}&tipoSolicitud=${codigoSituacion}`).pipe(
+      catchError(e => {
+        if (e.status ==400) return throwError(e);
+      })
+    );
+  }
 }

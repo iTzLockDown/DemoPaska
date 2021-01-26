@@ -1,0 +1,131 @@
+<div class="card">
+  <div class="card-header">
+    Datos del Cliente Codigo : <strong> {{solicitudAtencionCredito.CodigoCliente}}</strong> </div>
+  <div class="card-body">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Documento Cliente</label>
+        <div class="col-md-3">
+          <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.DocumentoCliente}}">
+        </div>
+
+        <label class="col-md-2 col-form-label">Nombre Cliente</label>
+        <div class="col-md-4">
+          <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.NombreCliente}}">
+        </div>
+      </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Dirección</label>
+      <div class="col-md-3">
+        <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.DireccionCliente}}">
+      </div>
+
+      <label class="col-md-2 col-form-label">Telefono</label>
+      <div class="col-md-4">
+        <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.TelefonoCliente}}">
+      </div>
+    </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Nombre Asesor</label>
+        <div class="col-md-3">
+          <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.NombreAsesor}}">
+        </div>
+
+        <label class="col-md-2 col-form-label">Oficina</label>
+        <div class="col-md-4">
+          <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.DescripcionOficina}}">
+        </div>
+      </div>
+  </div>
+
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Solicitud:<strong> {{solicitudAtencionCredito.Situacion}}</strong> </div>
+  <div class="card-body">
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Accion para la solicitud:</label>
+      <div class="col-md-9 ">
+        <select class="form-control"  name="CodigoClasificacion" (change)="onChange($event.target.value)">
+          <option *ngFor="let listado of skills" [ngValue]="listado">
+            {{listado.Descripcion}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label text-left">Garantia</label>
+      <div class="col-md-9">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th>Codigo Garantia</th>
+            <th>Tipo Garantia</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let garantias of solicitudGarantiaResponse">
+            <td> {{garantias.CodigoGarantia}} </td>
+            <td> {{garantias.TipoGarantia}} </td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label text-left">Requisito</label>
+      <div class="col-md-9">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th>Descripcion</th>
+            <th>Archivo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let garantias of solicitudRequisitoResponse">
+            <td> {{garantias.Descripcion}} </td>
+            <td> {{garantias.Ubicacion}} </td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="form-group row">
+
+      <label class="col-md-3 col-form-label">Procesos de Solicitud</label>
+      <div class="col-md-9">
+        <select class="form-control"  name="CodigoClasificacion" [(ngModel)]="oAccionSolicitudResponse">
+          <option [ngValue]="undefined">Selecciona una opción</option>
+          <option *ngFor="let listado of procesoSolicitudResponse" [ngValue]="listado">
+            {{listado.DescripcionProceso}}   ,  {{listado.NumeroOrden}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label text-left">Descripción </label>
+      <div class="col-md-9">
+        <textarea class="form-control" id="textarea-input" [(ngModel)]="this.comentarioAtencion" name="descripcion" rows="3" placeholder="Descripción.." ></textarea>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-sm btn-primary" role="button" (click)="FinalizaProcesoAtencion()">
+      <i class="fa fa-save" ></i> Grabar</button> &nbsp;
+    <button class="btn btn-sm btn-danger" type="reset" (click)="backClicked()">
+      <i class="fa fa-arrow-left"></i> Regresar</button>
+  </div>
+</div>

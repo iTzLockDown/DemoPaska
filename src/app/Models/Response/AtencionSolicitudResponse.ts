@@ -21,4 +21,5 @@ export class AtencionSolicitudResponse{
   Situacion :string;
   Tiempo :string;
   NumeroGarantias :string;
+  CodigoTipoSolicitud :string;
 }

@@ -13,12 +13,15 @@ import {FormClasificacionContratoComponent} from './clasificacion-contrato/form-
 import {FormModeloContratoComponent} from './contrato/form-modelo-contrato/form-modelo-contrato.component';
 import {AtencionSolicitudComponent} from './Solicitud/atencion-solicitud/atencion-solicitud.component';
 import {RegistraSolicitudComponent} from './Solicitud/registra-solicitud/registra-solicitud.component';
-import {GestionSolicitudComponent} from './Solicitud/gestion-solicitud/gestion-solicitud.component';
+import {GestionSolicitudComponent} from './Solicitud/GestionSolicitud/gestion-solicitud/gestion-solicitud.component';
 import {SolicitudProcesoComponent} from './tipo-solicitud/solicitud-proceso/solicitud-proceso.component';
 import {DashboardComponent} from './Common/dashboard/dashboard.component';
 import {AutentificacionGuard} from '../Guards/autentificacion.guard';
 import {PlantillaContratoComponent} from './plantilla-contrato/plantilla-contrato.component';
 import {GenerarContratoComponent} from './generar-contrato/generar-contrato.component';
+import {AnuladoSolicitudComponent} from "./Solicitud/GestionSolicitud/anulado-solicitud/anulado-solicitud.component";
+import {AtendidoSolicitudComponent} from "./Solicitud/GestionSolicitud/atendido-solicitud/atendido-solicitud.component";
+import {EnviadoSolicitudComponent} from "./Solicitud/GestionSolicitud/enviado-solicitud/enviado-solicitud.component";
 export const routes: Routes = [
   {
     path: '', component: AppDefaultLayoutComponent,
@@ -78,6 +81,16 @@ export const routes: Routes = [
       },
       {
         path: 'plantillascontrato/generarcontrato', component: GenerarContratoComponent
+      },
+      /* ATENCION */
+      {
+        path: 'solicitudanulada', component: AnuladoSolicitudComponent
+      },
+      {
+        path: 'solicitudatendida', component: AtendidoSolicitudComponent
+      },
+      {
+        path: 'solicitudenviada', component: EnviadoSolicitudComponent
       },
       { path: '**', component: DashboardComponent }
     ]

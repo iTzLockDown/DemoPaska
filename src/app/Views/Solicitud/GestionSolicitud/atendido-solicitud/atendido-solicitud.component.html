@@ -1,18 +1,22 @@
-<app-estado-proceso-solicitud *ngIf="estadoModalProceso" (estadoModalProceso)="CerrarCreditoCliente($event)" [codigoSolicitud]="codigoSolicitud"></app-estado-proceso-solicitud>
 <div class="card">
   <div class="card-header">
     <i class="fa fa-user"></i> Solicitudes de Atencion
 
   </div>
 
+
+
+
+
   <div class="card-body">
+
     <div class="text-left">
       <div class="form-group row">
-        <label class="col-md-3 col-form-label">Buscar por situacion de la Solicitud</label>
+        <label class="col-md-3 col-form-label">Buscar por tipo de Solicitud</label>
         <div class="col-md-6">
-          <select name="requisito" class="form-control" [(ngModel)]="objetoSituacion">
-            <option *ngFor="let situacion of situacionResponse" [ngValue]="situacion" >
-              {{situacion.Descripcion}}
+          <select name="requisito" class="form-control" [(ngModel)]="objetoSolicitudn">
+            <option *ngFor="let solicitud of tipoSolicitudResponse" [ngValue]="solicitud" >
+              {{solicitud.NombreSolicitud}}
             </option>
           </select>
         </div>
@@ -20,10 +24,8 @@
         <label class="col-md-3 col-form-label"></label>
 
       </div>
-
-
-
     </div>
+
     <br>
     <table class="table table-responsive">
       <thead>
@@ -48,8 +50,8 @@
         <td> {{solicitud.Tiempo}}</td>
         <td> {{solicitud.NumeroGarantias}}</td>
         <td>
-          <button class="btn btn-sm btn-google-plus" type="button" [routerLink]="['gestionsolicitud', solicitud.CodigoSolicitud]" (click)="IniciarAccion(solicitud.CodigoSolicitud)"><i class="fa fa-edit" title="Gestionar" ></i></button> |
-          <button class="btn btn-sm btn-behance" type="button"  (click)="AbrirCreditoCliente(solicitud.CodigoSolicitud)"><i class="fa fa-list" title="Estado Proceso" ></i></button>
+          <button class="btn btn-sm btn-google-plus" type="button" [routerLink]="['gestionsolicitud', solicitud.CodigoSolicitud]"><i class="fa fa-edit" title="Gestionar" ></i></button> |
+          <button class="btn btn-sm btn-behance" type="button"><i class="fa fa-list" title="Estado Proceso" ></i></button>
         </td>
       </tr>
       </tbody>
@@ -76,4 +78,5 @@
     </ul>
   </div>
 </div>
+
 

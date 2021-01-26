@@ -32,10 +32,10 @@ export class EstadoProcesoSolicitudService {
     );
   }
 
-  Listar(codigoSolicitud: string):Observable<AccionSolicitudResponse[]>{
+  Listar(codigoSolicitud: string): Observable<AccionSolicitudResponse[]> {
     return this.http.get<AccionSolicitudResponse[]>(`${_EstadoProcesoSolicitudApi.Listar}${codigoSolicitud}`).pipe(
       catchError(e => {
-        if (e.status ==400) return throwError(e);
+        if (e.status == 400) return throwError(e);
       })
     );
   }

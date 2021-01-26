@@ -86,6 +86,7 @@ export class RegistraSolicitudComponent implements OnInit {
     this.estadoModal = $event;
     this.CargarCredito(this.clienteData.CodigoCliente);
     this.DatoGarantia(this.clienteData.CodigoCliente, '002');
+    this.LimpiaArray();
   }
   CerrarCreditoCliente($event) {
     this.estadoModalCredito = $event;
@@ -115,7 +116,7 @@ export class RegistraSolicitudComponent implements OnInit {
   }
   AgregarRequisitos(codigoSolicitud: string) {
     this.requisitos = new RequisitosRequest();
-    this.requisitos.CodigoTipoSolicitud = this.coditoTipoSolicitud.toString();
+    this.requisitos.CodigoTipoSolicitud = codigoSolicitud;
     this.requisitos.NombreSolicitud =  '';
     this.requisitos.UsuarioConsulta = 'ntrucios';
     this.requisitos.TerminalConsulta = 'CYRREC04';

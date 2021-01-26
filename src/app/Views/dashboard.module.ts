@@ -22,7 +22,10 @@ import {BuscarClienteComponent} from './Solicitud/registra-solicitud/buscar-clie
 import {CreditoClienteComponent} from './Solicitud/registra-solicitud/credito-cliente/credito-cliente.component';
 import {EstadoProcesoSolicitudComponent} from './Solicitud/atencion-solicitud/estado-proceso-solicitud/estado-proceso-solicitud.component';
 import {SolicitudProcesoComponent} from './tipo-solicitud/solicitud-proceso/solicitud-proceso.component';
-import {GestionSolicitudComponent} from './Solicitud/gestion-solicitud/gestion-solicitud.component';
+import {GestionSolicitudComponent} from './Solicitud/GestionSolicitud/gestion-solicitud/gestion-solicitud.component';
+import {AnuladoSolicitudComponent} from "./Solicitud/GestionSolicitud/anulado-solicitud/anulado-solicitud.component";
+import {EnviadoSolicitudComponent} from "./Solicitud/GestionSolicitud/enviado-solicitud/enviado-solicitud.component";
+import {AtendidoSolicitudComponent} from "./Solicitud/GestionSolicitud/atendido-solicitud/atendido-solicitud.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -42,11 +45,15 @@ import {GestionSolicitudComponent} from './Solicitud/gestion-solicitud/gestion-s
     FormModeloContratoComponent,
     RegistraSolicitudComponent,
     BuscarClienteComponent,
-    AtencionSolicitudComponent,
     CreditoClienteComponent,
     EstadoProcesoSolicitudComponent,
     SolicitudProcesoComponent,
     GestionSolicitudComponent,
+    AtencionSolicitudComponent,
+    AnuladoSolicitudComponent,
+    EnviadoSolicitudComponent,
+    AtendidoSolicitudComponent
+
   ],
   providers: [
     AsesorService,

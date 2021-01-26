@@ -15,6 +15,9 @@ export class _AsesorApi {
 export class _AtencionSolicitudApi{
   public static Prefijo = RoutesAPI.API_ENDPOINT+'/solicitudcredito/';
   public static Lista = _AtencionSolicitudApi.Prefijo+'lista?codigoAsesor='
+  public static ListaTipo = _AtencionSolicitudApi.Prefijo+'listasituacion?codigoAsesor='
+  public static ListaDevuelto = _AtencionSolicitudApi.Prefijo+'listadevolucion?codigoAsesor='
+  public static ListaAsesorSolicitud = _AtencionSolicitudApi.Prefijo+'listaasesortipo?codigoAsesor='
   public static TraerUno = _AtencionSolicitudApi.Prefijo+'traeruno?codigoSolicitud=';
   public static Grabar = _AtencionSolicitudApi.Prefijo+'grabar';
 }
@@ -98,6 +101,9 @@ export class _GarantiaApi{
   public static Prefijo = RoutesAPI.API_ENDPOINT+'/tiposolicitud/';
   public static LineaCreditoGarantia = _GarantiaApi.Prefijo+'/lineacreditogarantia?codigoCliente=';
   public static DatoGarantia = _GarantiaApi.Prefijo+'/datosgarantia?codigoCliente=';
+  public static SolicitudGarantia = _GarantiaApi.Prefijo+'/listacodigogarantia?codigoCliente=';
+  public static SolicitudRequisito = _GarantiaApi.Prefijo+'/listacodigorequisito?codigoCliente=';
+
 }
 
 export class _Login{

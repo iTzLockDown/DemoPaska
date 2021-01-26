@@ -35,7 +35,8 @@ PdfMakeWrapper.setFonts(pdfFonts);
     AppDefaultLayoutComponent,
     DashboardComponent,
     PlantillaContratoComponent,
-    GenerarContratoComponent
+    GenerarContratoComponent,
+
   ],
   imports: [
     BrowserModule,

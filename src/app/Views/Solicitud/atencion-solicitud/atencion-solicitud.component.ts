@@ -6,6 +6,8 @@ import {EstadoProcesoSolicitudService} from '../../../Services/estado-proceso-so
 import {AccionSolicitud} from '../../../Models/Request/AccionSolicitud';
 import {EstadoSolicitudService} from "../../../Services/estado-solicitud.service";
 import {EstadoResponse} from "../../../Models/Response/EstadoResponse";
+import {SituacionSolicitudService} from "../../../Services/situacion-solicitud.service";
+import {SituacionResponse} from "../../../Models/Response/SituacionResponse";
 
 @Component({
   selector: 'app-atencion-solicitud',
@@ -15,15 +17,15 @@ export class AtencionSolicitudComponent implements OnInit {
   estadoModalProceso: boolean = false;
   public accionSolicitud: AccionSolicitud = new AccionSolicitud();
   atencionSolicitud: AtencionSolicitudResponse[];
-  estadoResponse: EstadoResponse[];
-  objetoEstado: EstadoResponse;
+  situacionResponse: SituacionResponse[];
+  objetoSituacion: SituacionResponse;
   codigoSolicitud: string;
   estadosSolicitudBU: AtencionSolicitudResponse[];
   estadosSolicitud: AtencionSolicitudResponse[];
 
   constructor(private router: Router,
               private solicitudAtencion: AtencionSolicitudService,
-              private estadoSolicitudService: EstadoSolicitudService,
+              private situacionSolicitudService: SituacionSolicitudService,
               private estadoProcesoSolicitud: EstadoProcesoSolicitudService,
               private activatedRoute: ActivatedRoute) { }
 
@@ -55,11 +57,11 @@ export class AtencionSolicitudComponent implements OnInit {
     );
   }
   Prueba() {
-    this.estadosSolicitud = this.estadosSolicitudBU.filter(x => `${x.Estado}`.toUpperCase().includes(this.objetoEstado.Descripcion));
+    this.estadosSolicitud = this.estadosSolicitudBU.filter(x => `${x.Situacion}`.toUpperCase().includes(this.objetoSituacion.Descripcion));
   }
   CargarEstados() {
-    this.estadoSolicitudService.Listar().subscribe(
-      respose => this.estadoResponse = respose
+    this.situacionSolicitudService.Listar().subscribe(
+      respose => this.situacionResponse = respose
     );
   }
   AbrirCreditoCliente(codigoSolicitud: string) {
