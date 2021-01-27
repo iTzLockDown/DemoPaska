@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    Datos del Cliente Codigo : <strong> {{solicitudAtencionCredito.CodigoCliente}}</strong> </div>
+    Datos del Cliente Código : <strong> {{solicitudAtencionCredito.CodigoCliente}}</strong> </div>
   <div class="card-body">
       <div class="form-group row">
         <label class="col-md-3 col-form-label">Documento Cliente</label>
@@ -19,7 +19,7 @@
         <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.DireccionCliente}}">
       </div>
 
-      <label class="col-md-2 col-form-label">Telefono</label>
+      <label class="col-md-2 col-form-label">Teléfono</label>
       <div class="col-md-4">
         <input class="form-control" type="text" placeholder="Nombre..." name="nombre" value="{{solicitudAtencionCredito.TelefonoCliente}}">
       </div>
@@ -46,7 +46,7 @@
   <div class="card-body">
 
     <div class="form-group row">
-      <label class="col-md-3 col-form-label">Accion para la solicitud:</label>
+      <label class="col-md-3 col-form-label">Acción para la solicitud:</label>
       <div class="col-md-9 ">
         <select class="form-control"  name="CodigoClasificacion" (change)="onChange($event.target.value)">
           <option *ngFor="let listado of skills" [ngValue]="listado">
@@ -57,13 +57,13 @@
     </div>
 
     <div class="form-group row">
-      <label class="col-md-3 col-form-label text-left">Garantia</label>
+      <label class="col-md-3 col-form-label text-left">Garantía</label>
       <div class="col-md-9">
         <table class="table table-responsive">
           <thead>
           <tr>
-            <th>Codigo Garantia</th>
-            <th>Tipo Garantia</th>
+            <th>Código Garantía</th>
+            <th>Tipo Garantía</th>
           </tr>
           </thead>
           <tbody>
@@ -84,7 +84,7 @@
         <table class="table table-responsive">
           <thead>
           <tr>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Archivo</th>
           </tr>
           </thead>
@@ -104,7 +104,7 @@
       <label class="col-md-3 col-form-label">Procesos de Solicitud</label>
       <div class="col-md-9">
         <select class="form-control"  name="CodigoClasificacion" [(ngModel)]="oAccionSolicitudResponse">
-          <option [ngValue]="undefined">Selecciona una opción</option>
+          <option [ngValue]="undefined">Seleccioné una opción</option>
           <option *ngFor="let listado of procesoSolicitudResponse" [ngValue]="listado">
             {{listado.DescripcionProceso}}   ,  {{listado.NumeroOrden}}
           </option>

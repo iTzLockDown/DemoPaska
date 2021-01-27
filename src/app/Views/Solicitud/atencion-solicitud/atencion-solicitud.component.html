@@ -1,14 +1,14 @@
 <app-estado-proceso-solicitud *ngIf="estadoModalProceso" (estadoModalProceso)="CerrarCreditoCliente($event)" [codigoSolicitud]="codigoSolicitud"></app-estado-proceso-solicitud>
 <div class="card">
   <div class="card-header">
-    <i class="fa fa-user"></i> Solicitudes de Atencion
+    <i class="fa fa-user"></i> Solicitudes de Atención
 
   </div>
 
   <div class="card-body">
     <div class="text-left">
       <div class="form-group row">
-        <label class="col-md-3 col-form-label">Buscar por situacion de la Solicitud</label>
+        <label class="col-md-3 col-form-label">Buscar por situación de la Solicitud</label>
         <div class="col-md-6">
           <select name="requisito" class="form-control" [(ngModel)]="objetoSituacion">
             <option *ngFor="let situacion of situacionResponse" [ngValue]="situacion" >
@@ -16,7 +16,7 @@
             </option>
           </select>
         </div>
-        <button class="btn btn-primary" (click)="Prueba()"> <i class="fa fa-search"></i> buscar</button>
+        <button class="btn btn-primary" (click)="Prueba()"> <i class="fa fa-search"></i> Buscar</button>
         <label class="col-md-3 col-form-label"></label>
 
       </div>
@@ -32,7 +32,7 @@
         <th>Cliente</th>
         <th>Asesor</th>
         <th>Monto Cred.</th>
-        <th>Situacion</th>
+        <th>Situación</th>
         <th><i class="fa fa-clock-o" title="Tiempo en Espera" ></i></th>
         <th>N° Gar.</th>
         <th></th>
