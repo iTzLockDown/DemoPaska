@@ -6,7 +6,7 @@
 
 <div class="card card-accent-primary" >
   <div class="card-header">
-    Datos del Cliente Codigo : <strong> </strong> </div>
+    Datos del Cliente Código : <strong> </strong> </div>
   <div class="card-body">
     <div class="text-right ">
       <button *ngIf="clienteData.CodigoCliente!=null" class="btn btn-sm btn-github" (click)="AbrirCreditoCliente(this.clienteData.CodigoCliente)"><i class="fa fa-object-group"></i> Ver Detalle de Garantias</button> |
@@ -15,12 +15,12 @@
     <br>
 
     <div class="form-group row">
-      <label class="col-md-3 col-form-label">Codigo Cliente</label>
+      <label class="col-md-3 col-form-label">Código Cliente</label>
       <div class="col-md-3">
         <input class="form-control" type="text" placeholder="Nombre..." name="documento" value="{{clienteData.CodigoCliente}}" >
       </div>
 
-      <label class="col-md-2 col-form-label">Codigo Credito </label>
+      <label class="col-md-2 col-form-label">Código Crédito </label>
       <div class="col-md-4">
         <input class="form-control" type="text" placeholder="Nombre..." name="nombre"   value="{{this.recibeCodigo}}">
       </div>
@@ -42,7 +42,7 @@
         <input class="form-control" type="text" placeholder="Nombre..." name="nombre"  value="{{clienteData.Direccion}}" >
       </div>
 
-      <label class="col-md-2 col-form-label">Telefono</label>
+      <label class="col-md-2 col-form-label">Teléfono</label>
       <div class="col-md-4">
         <input class="form-control" type="text" placeholder="Nombre..." name="nombre"  value="{{clienteData.Telefono}}" >
       </div>
