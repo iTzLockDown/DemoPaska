@@ -22,6 +22,7 @@ import {GenerarContratoComponent} from './generar-contrato/generar-contrato.comp
 import {AnuladoSolicitudComponent} from "./Solicitud/GestionSolicitud/anulado-solicitud/anulado-solicitud.component";
 import {AtendidoSolicitudComponent} from "./Solicitud/GestionSolicitud/atendido-solicitud/atendido-solicitud.component";
 import {EnviadoSolicitudComponent} from "./Solicitud/GestionSolicitud/enviado-solicitud/enviado-solicitud.component";
+import {PruebascrapingComponent} from "../pruebascraping/pruebascraping.component";
 export const routes: Routes = [
   {
     path: '', component: AppDefaultLayoutComponent,
@@ -91,6 +92,10 @@ export const routes: Routes = [
       },
       {
         path: 'solicitudenviada', component: EnviadoSolicitudComponent
+      },
+      /* PRUEBA SCRAPING*/
+      {
+        path: 'scraping', component: PruebascrapingComponent
       },
       { path: '**', component: DashboardComponent }
     ]

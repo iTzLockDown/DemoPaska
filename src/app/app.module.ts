@@ -21,6 +21,7 @@ import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { PlantillaContratoComponent } from './Views/plantilla-contrato/plantilla-contrato.component';
 import {GenerarContratoComponent} from './Views/generar-contrato/generar-contrato.component';
+import { PruebascrapingComponent } from './pruebascraping/pruebascraping.component';
 PdfMakeWrapper.setFonts(pdfFonts);
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     DashboardComponent,
     PlantillaContratoComponent,
     GenerarContratoComponent,
+    PruebascrapingComponent,
 
   ],
   imports: [

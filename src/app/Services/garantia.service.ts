@@ -45,4 +45,13 @@ export class GarantiaService {
       })
     );
   }
+
+  PruebaScraping(): Observable<any>{
+    return this.http.get<any>(`http://cej-demo.ngrok.io/data/00090-2017-88-2404-JM-CI-01`).pipe(
+      catchError(e => {
+        if (e.status === 400) {return throwError(e); }
+      })
+    );
+
+  }
 }
