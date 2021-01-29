@@ -22,6 +22,8 @@ import {GenerarContratoComponent} from './generar-contrato/generar-contrato.comp
 import {AnuladoSolicitudComponent} from "./Solicitud/GestionSolicitud/anulado-solicitud/anulado-solicitud.component";
 import {AtendidoSolicitudComponent} from "./Solicitud/GestionSolicitud/atendido-solicitud/atendido-solicitud.component";
 import {EnviadoSolicitudComponent} from "./Solicitud/GestionSolicitud/enviado-solicitud/enviado-solicitud.component";
+import {DiseniadorContratoComponent} from "./diseniador-contrato/diseniador-contrato.component";
+import {GeneradorContratoComponent} from "./generador-contrato/generador-contrato.component";
 export const routes: Routes = [
   {
     path: '', component: AppDefaultLayoutComponent,
@@ -91,6 +93,12 @@ export const routes: Routes = [
       },
       {
         path: 'solicitudenviada', component: EnviadoSolicitudComponent
+      },
+      {
+        path: 'diseniador', component: DiseniadorContratoComponent
+      },
+      {
+        path: 'diseniador/generador', component: GeneradorContratoComponent
       },
       { path: '**', component: DashboardComponent }
     ]

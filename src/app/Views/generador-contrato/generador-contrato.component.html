@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header">
+    <i class="fa fa-user"></i> Clasificación de Contratos
+
+  </div>
+
+  <div class="card-body">
+    <div class="text-right "><a href="" class="btn btn-sm btn-outline-info" [routerLink]="'generador'"><i class="fa fa-file-word-o"></i> Nuevo Contrato</a></div>
+
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label text-left">Requisito</label>
+      <div class="col-md-9">
+        <table class="table table-responsive">
+          <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Archivo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let vari of variables; let in=index">
+            <td> {{vari}} </td>
+            <td><input type="text"  (change)="IngresaVariable($event)" class="form-control" ></td>
+            <td><button (click)="Reemplazar(vari)">click</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="text-left">
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Diseño</label>
+        <div class="col-md-9">
+          <label for="">{{this.xParrafoGeneral}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-sm btn-primary" (click)="download()">Descargar Plantilla</button>
+</div>
