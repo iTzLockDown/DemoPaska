@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { saveAs } from "file-saver";
 import {AlignmentType, Document, Packer, Paragraph, TabStopPosition, TabStopType, TextRun} from "docx";
 import {ClienteResponse} from "../../Models/Response/ClienteResponse";
+import {experiences} from "../plantilla-contrato/con-data";
 
 @Component({
   selector: 'app-generador-contrato',
   templateUrl: './generador-contrato.component.html',
 })
 export class GeneradorContratoComponent implements OnInit {
-  xParrafoGeneral='Esta el @xcliente@ y el contratista con ruc n° @xruc@ y sus documentos @xdni@, esta sera una prueba. agregando otra @xservicio@';
+  xParrafoGeneral='Esta el @xcliente@ y el contratista con ruc n° @xruc@ y sus documentos.' ;
 
   clienteResponse: ClienteResponse = new ClienteResponse();
 
@@ -45,13 +46,13 @@ export class GeneradorContratoComponent implements OnInit {
 
   public download(): void {
     console.log(this.clienteResponse);
-    Packer.toBlob(this.create()).then(blob => {
+    Packer.toBlob(this.create([experiences])).then(blob => {
       console.log(blob);
       saveAs(blob, "example.docx");
       console.log("Document created successfully");
     });
   }
-  public create() {
+  public create([educations]): Document {
 
     const document = new Document();
 
@@ -181,8 +182,77 @@ export class GeneradorContratoComponent implements OnInit {
             ),
           ],
         }),
+
+        new Paragraph({
+          alignment: AlignmentType.CENTER,
+          tabStops: [
+            {
+              type: TabStopType.RIGHT,
+              position: TabStopPosition.MAX,
+            },
+          ],
+          children: [
+            new TextRun({
+              text: "CONTRATO DE COMPRA-VENTA CON CLAUSULAS ADICIONALES DE PRESTAMO “CREDITO MI VIVIENDA” Y CONSTITUCION DE GARANTIA HIPOTECARIA",
+              bold: true,
+            })
+          ],
+        }),
+
+        ...educations
+          .map((education) => {
+            const arr: Paragraph[] = [];
+            arr.push(
+              this.createInstitutionHeader('jackpot', `2010 - 2020`),
+            );
+            arr.push(this.createRoleText(`Computer Science- semi senior`));
+            return arr;
+          })
+          .reduce((prev, curr) => prev.concat(curr), []),
       ],
     });
     return document;
+  }
+
+  public createInstitutionHeader(institutionName: string, dateText: string): Paragraph {
+    return new Paragraph({
+      tabStops: [
+        {
+          type: TabStopType.RIGHT,
+          position: TabStopPosition.MAX,
+        },
+      ],
+      children: [
+        new TextRun({
+          text: institutionName,
+          bold: true,
+        }),
+        new TextRun({
+          text: `\t${dateText}`,
+          bold: true,
+        }),
+      ],
+    });
+  }
+  public createRoleText(roleText: string): Paragraph {
+    return new Paragraph({
+      children: [
+        new TextRun({
+          text: roleText,
+          italics: true,
+        }),
+      ],
+    });
+  }
+  public splitParagraphIntoBullets(text: string): string[] {
+    return text.split("\n\n");
+  }
+  public createBullet(text: string): Paragraph {
+    return new Paragraph({
+      text: text,
+      bullet: {
+        level: 0,
+      },
+    });
   }
 }

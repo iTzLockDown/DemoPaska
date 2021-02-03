@@ -11,57 +11,6 @@ export const experiences = [
       name: "BlackRock",
     },
   },
-  {
-    isCurrent: false,
-    summary:
-      "Full-stack developer working with Angular, Node and TypeScript. Working for the iShares platform. Emphasis on Dev-ops and developing the continous integration pipeline.",
-    title: "Software Developer",
-    endDate: {
-      month: 11,
-      year: 2017,
-    },
-    startDate: {
-      month: 10,
-      year: 2016,
-    },
-    company: {
-      name: "Torch Markets",
-    },
-  },
-  {
-    isCurrent: false,
-    summary:
-      "Used ASP.NET MVC 5 to produce a diversity data collection tool for the future of British television.\n\nUsed AngularJS and C# best practices. Technologies used include JavaScript, ASP.NET MVC 5, SQL, Oracle, SASS, Bootstrap, Grunt.",
-    title: "Software Developer",
-    endDate: {
-      month: 10,
-      year: 2016,
-    },
-    startDate: {
-      month: 3,
-      year: 2015,
-    },
-    company: {
-      name: "Soundmouse",
-    },
-  },
-  {
-    isCurrent: false,
-    summary:
-      "Develop web commerce platforms for constious high profile clients.\n\nCreated a log analysis web application with the Play Framework in Java, incorporating Test Driven Development. It asynchronously uploads and processes large (2 GB) log files, and outputs meaningful results in context with the problem. \n\nAnalysis  and  development  of  the payment system infrastructure and user accounts section to be used by several clients of the company such as Waitrose, Tally Weijl, DJ Sports, Debenhams, Ann Summers, John Lewis and others.\n\nTechnologies used include WebSphere Commerce, Java, JavaScript and JSP.",
-    title: "Java Developer",
-    endDate: {
-      month: 10,
-      year: 2014,
-    },
-    startDate: {
-      month: 3,
-      year: 2013,
-    },
-    company: {
-      name: "Soundmouse",
-    },
-  },
 ];
 
 export const education = [

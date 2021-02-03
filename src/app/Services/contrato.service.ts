@@ -12,7 +12,6 @@ export class ContratoService {
 
   constructor(private http: HttpClient) { }
   Listar(): Observable<ModeloContratoResponse[]> {
-
     return this.http.get<ModeloContratoResponse[]>(`${_ContratoApi.Listar}`).pipe(
       catchError(e => {
         if (e.status ==400) return throwError(e);
