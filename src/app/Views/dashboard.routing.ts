@@ -98,7 +98,7 @@ export const routes: Routes = [
         path: 'diseniador', component: DiseniadorContratoComponent
       },
       {
-        path: 'diseniador/generador', component: GeneradorContratoComponent
+        path: 'generador', component: GeneradorContratoComponent
       },
       { path: '**', component: DashboardComponent }
     ]

@@ -2,25 +2,65 @@
   <div class="card-header">
     <strong>Formulario</strong> Clasificación de Contratos</div>
   <div class="card-body">
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-
+    <div class="text-left">
       <div class="form-group row">
-        <label class="col-md-3 col-form-label">Nombre</label>
+        <label class="col-md-3 col-form-label">Nombre de la plantilla</label>
         <div class="col-md-9">
-          <input class="form-control" type="text" placeholder="Nombre..." name="nombre" [(ngModel)]="clasificacionContratoRequest.Nombre">
+          <input type="text" class="form-control" [(ngModel)]="clasificacionContratoRequest.Nombre" ng-enter="alert('xVariables')">
         </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Agregar Variable</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" [(ngModel)]="xVariables" ng-enter="alert('xVariables')">
+        </div>
+        <button class="btn btn-css3" (click)="AgregarVariable()" > <i class="fa fa-plus"></i> Agregar</button>
+        <label class="col-md-3 col-form-label"></label>
+
       </div>
 
       <div class="form-group row">
-        <label class="col-md-3 col-form-label text-left">Descripción</label>
-        <div class="col-md-9">
-          <textarea class="form-control" id="textarea-input" name="descripcion" rows="3" placeholder="Descripción.." [(ngModel)]="clasificacionContratoRequest.Descripcion"></textarea>
+        <label class="col-md-3 col-form-label">Agregar Variable</label>
+        <div class="col-md-6">
+          <textarea id="w3review" name="w3review" class="form-control" rows="4" cols="50" [(ngModel)]="xParrafo"
+                    ng-enter="alert('asdasd')">
+            </textarea>
         </div>
+        <button class="btn btn-primary" (click)="AgregarParrafo()" > <i class="fa fa-search"></i> Añadir a Plantilla</button>
 
       </div>
 
 
-    </form>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Diseño</label>
+        <div class="col-md-6">
+
+          <textarea id="w3review" name="w3review" class="form-control" rows="4" cols="50" [(ngModel)]="xParrafoGeneral"
+                    ng-enter="alert('asdasd')">
+            </textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Selecciona</label>
+        <div class="col-md-9">
+          <input value="Verificaion" type="checkbox" (change)="cambiandoNegrita()" [checked]="negrita"><i>Negrita </i>
+          <input value="Verificaion" type="checkbox" (change)="cambiandoTitulo()" [checked]="titulo"><i>Titulo </i>
+          <input value="Verificaion" type="checkbox" (change)="cambiandoParrafo()" [checked]="parrafo"><i>Parrafo </i>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Agregar Variable</label>
+        <div class="col-md-6">
+          <label for="">{{this.xDisenioGeneral}}</label>
+        </div>
+        <button class="btn btn-primary" (click)="AgregarDisenio()" > <i class="fa fa-search"></i> Añadir a Diseño</button>
+
+      </div>
   </div>
   <div class="card-footer">
     <button class="btn btn-sm btn-primary" role="button" (click)="Grabar()">

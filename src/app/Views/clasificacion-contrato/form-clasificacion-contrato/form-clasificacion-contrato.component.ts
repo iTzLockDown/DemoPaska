@@ -10,6 +10,15 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './form-clasificacion-contrato.component.html',
 })
 export class FormClasificacionContratoComponent implements OnInit {
+
+  xVariables :string;
+  xParrafo:string;
+  xParrafoGeneral='';
+  xDisenioGeneral='';
+  negrita= false;
+  titulo = false;
+  parrafo = false;
+
   public clasificacionContratoRequest: ClasificacionContratoRequest = new ClasificacionContratoRequest();
 
   constructor(private _location: Location,
@@ -40,8 +49,10 @@ export class FormClasificacionContratoComponent implements OnInit {
 
   Grabar():void{
 
+    this.clasificacionContratoRequest.Descripcion = this.xDisenioGeneral;
     this.clasificacionContratoRequest.Usuario = 'ntrucios';
     this.clasificacionContratoRequest.Terminal= 'CYRREC04';
+    console.log(this.clasificacionContratoRequest);
       this.clasificacionContratoService.Grabar(this.clasificacionContratoRequest).subscribe(
         response =>{
           alertifyjs.success('Creado Correctamente'),
@@ -61,5 +72,55 @@ export class FormClasificacionContratoComponent implements OnInit {
     //   },
     // );
   }
+  AgregarVariable()
+  {
+    this.xVariables = '@x'+this.xVariables+'@'
+    this.xParrafoGeneral = this.xParrafoGeneral+' '+this.xVariables;
+    this.xVariables ='';
+  }
 
+  AgregarParrafo()
+  {
+    this.xParrafoGeneral = this.xParrafoGeneral+' '+this.xParrafo;
+    this.xParrafo ='';
+  }
+  cambiandoNegrita()
+  {
+    this.negrita = this.negrita? !this.negrita:!this.negrita;
+    this.titulo=false;
+    this.parrafo=false;
+  }
+  cambiandoTitulo()
+  {
+    this.titulo = this.titulo? false:true;
+    this.negrita=false;
+    this.parrafo=false;
+  }
+
+  cambiandoParrafo()
+  {
+    this.parrafo = this.parrafo? false:true;
+    this.titulo=false;
+    this.negrita=false;
+  }
+  AgregarDisenio()
+  {
+    if(this.negrita){
+      this.xParrafoGeneral = '&#'+this.xParrafoGeneral+'&'
+    }
+    if(this.titulo){
+      this.xParrafoGeneral = '&$'+this.xParrafoGeneral+'&'
+    }
+    if(this.parrafo){
+      this.xParrafoGeneral = '&%'+this.xParrafoGeneral+'&'
+    }
+
+    this.xDisenioGeneral = this.xDisenioGeneral+' '+this.xParrafoGeneral;
+    this.xParrafoGeneral = '';
+    this.xParrafo = '';
+    this.parrafo=false;
+    this.titulo=false;
+    this.negrita=false;
+
+  }
 }
