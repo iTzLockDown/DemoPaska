@@ -12,7 +12,6 @@
       <tr>
         <th>N°</th>
         <th>Nombre</th>
-        <th>Descripción</th>
         <th></th>
       </tr>
       </thead>
@@ -20,7 +19,6 @@
       <tr *ngFor="let clasificionContrato of clasificacionContrato">
         <td>*</td>
         <td> {{this.clasificionContrato.Nombre}}</td>
-        <td> {{this.clasificionContrato.Descripcion}}</td>
         <td>
           <button class="btn btn-sm btn-css3" type="button" (click)="abrir(clasificionContrato, tipoSolicitudTemplate)"><i class="fa fa-file-word-o" title="Generar Plantilla"> Plantilla</i></button> |
           <button class="btn btn-sm btn-danger" type="button"><i class="fa fa-trash" title="Eliminar"></i></button>
@@ -65,20 +63,18 @@
       <div class="col-12">
 
         <div class="form-group row">
-          <label class="col-md-3 col-form-label text-left">Requisito</label>
-          <div class="col-md-9">
+          <div class="col-md-12">
             <table class="table table-responsive">
               <thead>
               <tr>
-                <th>Descripción</th>
-                <th>Archivo</th>
+                <th>Variable</th>
+                <th>Datos</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let vari of variables; let in=index">
-                <td> {{vari}} </td>
-                <td><input type="text"  (change)="IngresaVariable($event)" class="form-control" ></td>
-                <td><button (click)="Reemplazar(vari)">click</button></td>
+                <td> {{vari.substring(1).toUpperCase()}} </td>
+                <td><input type="text"  (change)="IngresaVariable($event)" (blur)="Reemplazar(vari)" class="form-control" ></td>
               </tr>
               </tbody>
             </table>

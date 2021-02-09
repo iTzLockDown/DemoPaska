@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './Views/Common/app-header/app-header.component';
 import { AppAssideComponent } from './Views/Common/app-asside/app-asside.component';
@@ -11,6 +11,7 @@ import { AppError404Component } from './Views/Common/error/app-error404/app-erro
 import {RouterModule} from '@angular/router';
 import {routes} from './app.routing';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {QuillModule} from 'ngx-quill';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppDefaultLayoutComponent} from './Views/Common/app-default-layout/app-default-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +24,7 @@ import { PlantillaContratoComponent } from './Views/plantilla-contrato/plantilla
 import {GenerarContratoComponent} from './Views/generar-contrato/generar-contrato.component';
 import { DiseniadorContratoComponent } from './Views/diseniador-contrato/diseniador-contrato.component';
 import { GeneradorContratoComponent } from './Views/generador-contrato/generador-contrato.component';
+
 PdfMakeWrapper.setFonts(pdfFonts);
 @NgModule({
   declarations: [
@@ -44,12 +46,13 @@ PdfMakeWrapper.setFonts(pdfFonts);
   ],
   imports: [
     BrowserModule,
+    QuillModule.forRoot(),
     HttpClientModule,
-    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    RouterModule.forRoot(routes),
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es-PE'},
@@ -57,6 +60,9 @@ PdfMakeWrapper.setFonts(pdfFonts);
       provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class AppModule { }

@@ -4,20 +4,16 @@ import {ClasificacionContratoRequest} from '../../../Models/Request/Clasificacio
 import {ClasificacionContratoService} from '../../../Services/clasificacion-contrato.service';
 import alertifyjs from 'AlertifyJS';
 import {ActivatedRoute, Router} from '@angular/router';
-
+import * as htmlDocx from 'html-docx-js/dist/html-docx';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-form-clasificacion-contrato',
   templateUrl: './form-clasificacion-contrato.component.html',
 })
 export class FormClasificacionContratoComponent implements OnInit {
-
+  tituloArchivo: string;
   xVariables :string;
-  xParrafo:string;
   xParrafoGeneral='';
-  xDisenioGeneral='';
-  negrita= false;
-  titulo = false;
-  parrafo = false;
 
   public clasificacionContratoRequest: ClasificacionContratoRequest = new ClasificacionContratoRequest();
 
@@ -29,27 +25,13 @@ export class FormClasificacionContratoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  CargarClasificacionContrato():void{
-
-      this.activatedRoute.params.subscribe(
-        params => {
-          let id = params['id']
-          if (id) {
-            // this.deporteService.getDeporte(id).subscribe(
-            //   (deportes) => this.deportes = deportes);
-          }
-        });
-
-  }
-
-
   backClicked() {
     this._location.back();
   }
 
   Grabar():void{
 
-    this.clasificacionContratoRequest.Descripcion = this.xDisenioGeneral;
+    this.clasificacionContratoRequest.Descripcion = this.xParrafoGeneral;
     this.clasificacionContratoRequest.Usuario = 'ntrucios';
     this.clasificacionContratoRequest.Terminal= 'CYRREC04';
     console.log(this.clasificacionContratoRequest);
@@ -79,48 +61,16 @@ export class FormClasificacionContratoComponent implements OnInit {
     this.xVariables ='';
   }
 
-  AgregarParrafo()
+  DescargarPlantilla()
   {
-    this.xParrafoGeneral = this.xParrafoGeneral+' '+this.xParrafo;
-    this.xParrafo ='';
-  }
-  cambiandoNegrita()
-  {
-    this.negrita = this.negrita? !this.negrita:!this.negrita;
-    this.titulo=false;
-    this.parrafo=false;
-  }
-  cambiandoTitulo()
-  {
-    this.titulo = this.titulo? false:true;
-    this.negrita=false;
-    this.parrafo=false;
-  }
-
-  cambiandoParrafo()
-  {
-    this.parrafo = this.parrafo? false:true;
-    this.titulo=false;
-    this.negrita=false;
-  }
-  AgregarDisenio()
-  {
-    if(this.negrita){
-      this.xParrafoGeneral = '&#'+this.xParrafoGeneral+'&'
+    if (this.clasificacionContratoRequest.Nombre==null){
+      alertifyjs.error('Ingrese nombre de plantilla');
     }
-    if(this.titulo){
-      this.xParrafoGeneral = '&$'+this.xParrafoGeneral+'&'
+    else {
+    let htmlDocument = '<!DOCTYPE html><html><head> <meta charset="utf-8"> <title></title> </head>';
+    htmlDocument = htmlDocument+ '  <head><body>'+this.xParrafoGeneral+'</body>   </html> ';
+    const converted=htmlDocx.asBlob(htmlDocument);
+    saveAs(converted, this.clasificacionContratoRequest.Nombre+'.docx');
     }
-    if(this.parrafo){
-      this.xParrafoGeneral = '&%'+this.xParrafoGeneral+'&'
-    }
-
-    this.xDisenioGeneral = this.xDisenioGeneral+' '+this.xParrafoGeneral;
-    this.xParrafoGeneral = '';
-    this.xParrafo = '';
-    this.parrafo=false;
-    this.titulo=false;
-    this.negrita=false;
-
   }
 }

@@ -26,10 +26,12 @@ import {GestionSolicitudComponent} from './Solicitud/GestionSolicitud/gestion-so
 import {AnuladoSolicitudComponent} from "./Solicitud/GestionSolicitud/anulado-solicitud/anulado-solicitud.component";
 import {EnviadoSolicitudComponent} from "./Solicitud/GestionSolicitud/enviado-solicitud/enviado-solicitud.component";
 import {AtendidoSolicitudComponent} from "./Solicitud/GestionSolicitud/atendido-solicitud/atendido-solicitud.component";
+import {QuillModule} from 'ngx-quill';
 @NgModule({
   imports: [
     CommonModule,
     DashboardRouting,
+    QuillModule.forRoot(),
     FormsModule
   ],
   declarations: [

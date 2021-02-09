@@ -20,52 +20,24 @@
       </div>
 
       <div class="form-group row">
-        <label class="col-md-3 col-form-label">Agregar Variable</label>
-        <div class="col-md-6">
-          <textarea id="w3review" name="w3review" class="form-control" rows="4" cols="50" [(ngModel)]="xParrafo"
-                    ng-enter="alert('asdasd')">
-            </textarea>
-        </div>
-        <button class="btn btn-primary" (click)="AgregarParrafo()" > <i class="fa fa-search"></i> Añadir a Plantilla</button>
-
-      </div>
-
-
-
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label">Diseño</label>
-        <div class="col-md-6">
-
-          <textarea id="w3review" name="w3review" class="form-control" rows="4" cols="50" [(ngModel)]="xParrafoGeneral"
-                    ng-enter="alert('asdasd')">
-            </textarea>
-        </div>
-      </div>
-
-
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label">Selecciona</label>
+        <label class="col-md-3 col-form-label">ng quill</label>
         <div class="col-md-9">
-          <input value="Verificaion" type="checkbox" (change)="cambiandoNegrita()" [checked]="negrita"><i>Negrita </i>
-          <input value="Verificaion" type="checkbox" (change)="cambiandoTitulo()" [checked]="titulo"><i>Titulo </i>
-          <input value="Verificaion" type="checkbox" (change)="cambiandoParrafo()" [checked]="parrafo"><i>Parrafo </i>
+          <quill-editor [(ngModel)]="xParrafoGeneral"></quill-editor>
         </div>
 
       </div>
-
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label">Agregar Variable</label>
-        <div class="col-md-6">
-          <label for="">{{this.xDisenioGeneral}}</label>
-        </div>
-        <button class="btn btn-primary" (click)="AgregarDisenio()" > <i class="fa fa-search"></i> Añadir a Diseño</button>
-
-      </div>
+      <br>
+      <br>
+      <br>
+      <br>
   </div>
   <div class="card-footer">
+    <button class="btn btn-xs btn-dark" role="button" (click)="DescargarPlantilla()">
+      <i class="fa fa-file-word-o" ></i> Descargar Plantilla</button> &nbsp;
     <button class="btn btn-sm btn-primary" role="button" (click)="Grabar()">
       <i class="fa fa-save"></i> Grabar</button> &nbsp;
     <button class="btn btn-sm btn-danger" type="reset" (click)="backClicked()">
       <i class="fa fa-arrow-left"></i> Regresar</button>
   </div>
+</div>
 </div>
