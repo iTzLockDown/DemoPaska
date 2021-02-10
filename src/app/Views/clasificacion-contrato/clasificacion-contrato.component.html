@@ -12,6 +12,7 @@
       <tr>
         <th>N°</th>
         <th>Nombre</th>
+        <th>Descripcion</th>
         <th></th>
       </tr>
       </thead>
@@ -19,6 +20,7 @@
       <tr *ngFor="let clasificionContrato of clasificacionContrato">
         <td>*</td>
         <td> {{this.clasificionContrato.Nombre}}</td>
+        <td> {{this.clasificionContrato.Descripcion}}</td>
         <td>
           <button class="btn btn-sm btn-css3" type="button" (click)="abrir(clasificionContrato, tipoSolicitudTemplate)"><i class="fa fa-file-word-o" title="Generar Plantilla"> Plantilla</i></button> |
           <button class="btn btn-sm btn-danger" type="button"><i class="fa fa-trash" title="Eliminar"></i></button>
