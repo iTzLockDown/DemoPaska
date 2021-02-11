@@ -26,10 +26,27 @@ export class GestionAtencionAsesorComponent implements OnInit {
     this.asesorAsigna.CodigoOficina = '001';
     this.asesorAsigna.Usuario = 'UsuarioWeb';
     this.asesorAsigna.Terminal = 'CYRREC04';
-    this.asesorService.AsignaAsesoresColaMultiple(this.asesorAsigna).subscribe((response) => alertifyjs.success('Se agrego el usuario.'));
+    this.asesorService.AsignaAsesoresColaMultiple(this.asesorAsigna).
+    subscribe(
+      (response) => {
+
+        alertifyjs.success('Se agrego el usuario.');
+        this.Actualiza();
+        }
+        ,
+      error => {
+        console.log(error)
+      }
+    );
   }
   AsignaAsesoresColaUnica(codigoUsuario: string ): void {
-    this.asesorService.AsignaAsesoresColaUnica(codigoUsuario).subscribe((response) => alertifyjs.error('Se ha quitado el usuario.'));
+    this.asesorService.AsignaAsesoresColaUnica(codigoUsuario).subscribe(
+      (response) =>
+      {
+        alertifyjs.error('Se ha quitado el usuario.');
+        this.Actualiza();
+      }
+    );
   }
   Actualiza(): void {
 

@@ -12,7 +12,6 @@
       <tr>
         <th>N°</th>
         <th>Nombre</th>
-        <th>Descripcion</th>
         <th></th>
       </tr>
       </thead>
@@ -20,7 +19,6 @@
       <tr *ngFor="let clasificionContrato of clasificacionContrato">
         <td>*</td>
         <td> {{this.clasificionContrato.Nombre}}</td>
-        <td> {{this.clasificionContrato.Descripcion}}</td>
         <td>
           <button class="btn btn-sm btn-css3" type="button" (click)="abrir(clasificionContrato, tipoSolicitudTemplate)"><i class="fa fa-file-word-o" title="Generar Plantilla"> Plantilla</i></button> |
           <button class="btn btn-sm btn-danger" type="button"><i class="fa fa-trash" title="Eliminar"></i></button>
@@ -56,7 +54,7 @@
 <ng-template #tipoSolicitudTemplate class="modal-lg">
 
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Contato: {{this.objClasificacionContrato.Nombre}}}</h4>
+    <h4 class="modal-title pull-left">Contato: {{this.objClasificacionContrato.Nombre}}</h4>
     <button (click)="modalRef.hide()" class="float-right btn btn-sm btn-red-cmac-hyo"> <i
       class="fa fa-times"></i></button>
   </div>

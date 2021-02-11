@@ -56,7 +56,7 @@ export class FormClasificacionContratoComponent implements OnInit {
   }
   AgregarVariable()
   {
-    this.xVariables = '@x'+this.xVariables+'@'
+    this.xVariables = '@|'+this.xVariables+'@'
     this.xParrafoGeneral = this.xParrafoGeneral+' '+this.xVariables;
     this.xVariables ='';
   }

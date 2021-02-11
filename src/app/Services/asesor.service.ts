@@ -14,11 +14,12 @@ export class AsesorService {
   constructor(private http: HttpClient) { }
 
   AsesoresColaUnica(): Observable<AsesorResponse[]> {
-    return this.http.get<AsesorResponse[]>(`${_AsesorApi.ListaColaUnica}`).pipe(
-      catchError(e => {
-        if (e.status === 400) {return throwError(e); }
-      })
-    );
+    // return this.http.get<AsesorResponse[]>(`${_AsesorApi.ListaColaUnica}`).pipe(
+    //   catchError(e => {
+    //     if (e.status === 400) {return throwError(e); }
+    //   })
+    // );
+    return this.http.get<AsesorResponse[]>(`${_AsesorApi.ListaColaUnica}`);
   }
 
   AsesoresColaMultiple(): Observable<AsesorResponse[]> {

@@ -60,18 +60,21 @@ export class ClasificacionContratoComponent implements OnInit {
   {
     this.variableReemplazado = this.objClasificacionContrato.Descripcion;
     var division = this.variableReemplazado.split('@');
+    console.log(division);
     for (var i in division){
-      if (division[i].includes('x')){
+      if (division[i].includes('|')){
         this.variables.push(division[i]);
       }
     }
+
     this.variables.filter(variables=> variables.indexOf('x'))
+    console.log(this.variables)
   }
 
   Reemplazar(variable: string){
     variable='@'+variable+'@';
     this.variableReemplazado = this.variableReemplazado.replace(variable, this.textoDeInput );
-    console.log(this.variableReemplazado);
+
   }
 
   IngresaVariable(event)
